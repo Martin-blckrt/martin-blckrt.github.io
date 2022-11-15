@@ -9,14 +9,13 @@
 
 window.addEventListener('DOMContentLoaded', event => {
 
-    console.log(window.location.href);
     // Navbar shrink function
     var navbarShrink = function () {
         const navbarCollapsible = document.body.querySelector('#mainNav');
         if (!navbarCollapsible) {
             return;
         }
-        if (window.scrollY === 0) {
+        if (window.scrollY === 0 &&& window.location.href="index.html") {
             navbarCollapsible.classList.remove('navbar-shrink')
         } else {
             navbarCollapsible.classList.add('navbar-shrink')
