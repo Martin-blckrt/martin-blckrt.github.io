@@ -16,7 +16,7 @@ window.addEventListener('DOMContentLoaded', event => {
             return;
         }
         if (window.scrollY === 0) {
-            if (window.location.href="index.html") {
+            if (window.location.href === "index.html") {
                 navbarCollapsible.classList.remove('navbar-shrink')
             }
         } else {
