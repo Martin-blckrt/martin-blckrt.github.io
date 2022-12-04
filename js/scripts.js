@@ -15,7 +15,7 @@ window.addEventListener('DOMContentLoaded', event => {
         if (!navbarCollapsible) {
             return;
         }
-        if (window.scrollY === 0 && window.location.href === 'https://martin-blckrt.github.io/') {
+        if (window.scrollY === 0 && window.location.href === 'http://127.0.0.1:4000/') {
             navbarCollapsible.classList.remove('navbar-shrink')
         } else {
             navbarCollapsible.classList.add('navbar-shrink')
