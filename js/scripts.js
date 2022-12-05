@@ -15,7 +15,7 @@ window.addEventListener('DOMContentLoaded', event => {
         if (!navbarCollapsible) {
             return;
         }
-        if (window.scrollY === 0 && (window.location.href === 'http://127.0.0.1:4000/' || window.location.href === 'http://127.0.0.1:4000/#about')) {
+        if (window.scrollY === 0 && ((window.location.href === 'http://127.0.0.1:4000/' || window.location.href === 'http://127.0.0.1:4000/#about') || (window.location.href === 'https://martin-blanckaert.com/' || window.location.href === 'https://martin-blanckaert.com/#about'))) {
             navbarCollapsible.classList.remove('navbar-shrink')
         } else {
             navbarCollapsible.classList.add('navbar-shrink')
