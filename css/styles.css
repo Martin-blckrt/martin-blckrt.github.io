@@ -11740,3 +11740,73 @@ section#about .section-heading {
   font-size: 0.9rem;
   font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
+
+
+.bigAboutContainer {
+  display: flex;
+  margin: 10px 120px 0 120px;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  justify-content: space-around;
+  gap: 90px;
+}
+
+.aboutSectionTitle {
+  color: #ffc800;
+}
+
+.layerContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.textLeftLayerLeft {
+  line-height: 28px;
+  flex: 80vh;
+  padding :0 100px 0 100px;
+}
+
+.textLeftLayerRight {
+  flex: 40vh;
+}
+
+.textRightLayerLeft {
+  flex: 40vh;
+  padding-left: 100px;
+}
+
+.textRightLayerRight {
+  line-height: 28px;
+  flex: 80vh;
+  padding :0 0 0 100px;
+}
+
+.intermediateMsg {
+  text-align: center;
+  color: #ffc800;
+}
+
+.custom-shape-divider-bottom-1654341115 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom-1654341115 svg {
+  position: relative;
+  display: block;
+  width: calc(110% + 1.3px);
+  height: 118px;
+  transform: rotateY(180deg);
+}
+
+.custom-shape-divider-bottom-1654341115 .shape-fill {
+  fill: #52A6CE;
+}
