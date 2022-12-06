@@ -11342,6 +11342,11 @@ p {
   border-radius: 100%;
 }
 
+.btn-social:hover {
+  background-color: #ffc800;
+  border-color: #ffc800;
+}
+
 #mainNav {
   padding-top: 1rem;
   padding-bottom: 1rem;
