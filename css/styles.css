@@ -11754,6 +11754,7 @@ section#about .section-heading {
 
 .aboutSectionTitle {
   color: #ffc800;
+  margin-bottom: 2rem;
 }
 
 .layerContainer {
@@ -11770,7 +11771,7 @@ section#about .section-heading {
 }
 
 .textLeftLayerRight {
-  flex: 40vh;
+  flex: 20vh;
 }
 
 .textRightLayerLeft {

@@ -37,6 +37,40 @@ window.addEventListener('DOMContentLoaded', event => {
         });
     };
 
+    // hover icon shows text
+    const telIcon = document.body.querySelector('#phoneIcon');
+    if (telIcon) {
+        telIcon.addEventListener('mouseenter', () => {
+            const contactMe = document.body.querySelector('#contactMe');
+            if (contactMe) {
+                contactMe.innerHTML = "My phone : +33761096401";
+            };
+        });
+        telIcon.addEventListener('mouseleave', () => {
+            const contactMe = document.body.querySelector('#contactMe');
+            if (contactMe) {
+                contactMe.innerHTML = "Feel free to contact me !";
+            };
+        });
+    };
+
+    // hover icon shows text
+    const mailIcon = document.body.querySelector('#mailIcon');
+    if (mailIcon) {
+        mailIcon.addEventListener('mouseenter', () => {
+            const contactMe = document.body.querySelector('#contactMe');
+            if (contactMe) {
+                contactMe.innerHTML = "My email : martin.blanckaert@utbm.fr";
+            };
+        });
+        mailIcon.addEventListener('mouseleave', () => {
+            const contactMe = document.body.querySelector('#contactMe');
+            if (contactMe) {
+                contactMe.innerHTML = "Feel free to contact me !";
+            };
+        });
+    };
+
     // Collapse responsive navbar when toggler is visible
     const navbarToggler = document.body.querySelector('.navbar-toggler');
     const responsiveNavItems = [].slice.call(
