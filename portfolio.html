@@ -240,7 +240,7 @@
                             <h2 class="text-uppercase">Chess Engine</h2>
                             <p class="item-intro text-muted">Minimax algorithm with performance improvements</p>
                             <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/1.jpg" alt="..."/>
-                            <p>Lorem ipsum dolor sit amet, consectetur
+                            <p class="portText">Lorem ipsum dolor sit amet, consectetur
                                 adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt
                                 repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae,
                                 nostrum, reiciendis facere nemo!</p>
@@ -286,7 +286,7 @@
                             <h2 class="text-uppercase">PySpark Distributed Random Forest</h2>
                             <p class="item-intro text-muted">BLA BLA FOREST</p>
                             <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/2.jpg" alt="..."/>
-                            <p>Lorem ipsum dolor sit amet, consectetur
+                            <p class="portText">Lorem ipsum dolor sit amet, consectetur
                                 adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt
                                 repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae,
                                 nostrum, reiciendis facere nemo!</p>
@@ -334,7 +334,7 @@
                                 using the Agile method, based on the development of Machine Learning models able to
                                 predict solar panel production on the French territory</p>
                             <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/3.jpg" alt="..."/>
-                            <p>Lorem ipsum dolor sit amet, consectetur
+                            <p class="portText">Lorem ipsum dolor sit amet, consectetur
                                 adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt
                                 repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae,
                                 nostrum, reiciendis facere nemo!</p>
@@ -380,7 +380,7 @@
                             <h2 class="text-uppercase">Pyspark Distributed Classification</h2>
                             <p class="item-intro text-muted">BLA BLA PYSPARK</p>
                             <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/4.jpg" alt="..."/>
-                            <p>Lorem ipsum dolor sit amet, consectetur
+                            <p class="portText">Lorem ipsum dolor sit amet, consectetur
                                 adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt
                                 repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae,
                                 nostrum, reiciendis facere nemo!</p>
@@ -427,19 +427,36 @@
                             <p class="item-intro text-muted">Implementation of the DFS and MinMax algorithms in order to
                                 develop an Artificial Intelligence able to play the card game "Love Letter"</p>
                             <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/5.jpg" alt="..."/>
-                            <p>This project was an exciting opportunity to apply the fundamentals of AI that we had
-                                learned in class. Working in teams, we set out to develop an AI that could play the
-                                popular card game Love letter. This game is a zero sum game, meaning that the gain of
-                                one player is balanced by the loss of the other player, making it an ideal candidate for
-                                AI development.</p>
 
-                            <p>To create our AI, we implemented two key algorithms: DFS (depth-first search) and
-                                negamax. These algorithms allowed our AI to explore the possible moves in the game and
-                                make decisions based on the likely outcomes. In particular, the negamax algorithm
-                                allowed us to efficiently evaluate the potential value of each move, helping our AI make
-                                intelligent decisions even in the face of uncertainty.</p>
+                            <p class="portText"> This project was an exciting opportunity to discover the fundamental concepts of artificial
+                                intelligence and work on algorithms covered in class. We made the choice to work on Love Letter, a popular
+                                zero sum card game, meaning that the gain of one player is balanced by the loss of the other player, making
+                                it an ideal candidate for AI development.</p>
 
-                            <p>Overall, this project was a great learning experience for me. It not only helped me
+                        <p class="portText"> The artificial intelligence we set out to develop needed to be able to act like a player :</p>
+                                <ul style="text-align:justify;margin-left:1.5rem">
+                                    <li>Know which cards are on the table (the isolated cards at the beginning of the game and all the played cards until the moment it needs to make a decision).</li>
+                                    <li>Draw and play cards, taking into account all the special cases related to the abilities of the cards and favoring the situation that will be most advantageous for it in the future, based on all possible situations.</li>
+                                    <li>Generate the game tree by considering all possibilities. In other words, to decide which card will be the most interesting to keep in hand, it must generate all the possibilities of cards that the opponent might play and see in which situations it will have the best results. To do this, it can deduce, based on the cards that have already been played, the ones that are already on the table, and the ones it has in its hand, which card the opponent can play and therefore know which situation might cause it to lose.</li>
+                                </ul>
+
+                            <p class="portText">To create our AI, we implemented two key algorithms: DFS (depth-first search) and
+                                Negamax. These algorithms allowed our AI to explore the possible moves in the game and
+                                make decisions based on the likely outcomes. In particular, the Negamax algorithm, a simplified version of the
+                                MinMax algorithm that is based on the principle of a zero-sum game, allowed us to efficiently evaluate the potential
+                                value of each move, helping our AI make intelligent decisions even in the face of uncertainty. The logic behind
+                                the algorithm is simple : player A, who is searching the game tree, will always try to maximize their moves and
+                                minimize those of their opponent. Although there are not many rounds in a game of Love Letter (a maximum of 8 rounds),
+                                the Negamax algorithm requires too many calculations to predict all the possible outcomes of the game in cases where
+                                the players have exhausted the deck and the victory is decided by the highest card. In order to reduce the number
+                                of states generated by the artificial intelligence - and reduce the time of reflection - we decided to implement
+                                alpha-beta pruning, which keeps only the promising branches of the tree based on previously visited nodes.</p>
+
+                            <p class="portText">Although we didn't have time to make an interface for playing the game - it is only playable in console -
+                                we did make a prototype of what we would've done with more time.
+                                It is accessible with the following <a href="https://www.figma.com/proto/3pBNYTXuuWcafmpLulezHa/LoveLetter?node-id=9%3A2&scaling=contain" target="_blank" rel="noopener">link</a>.</p>
+
+                            <p class="portText">Overall, this project was a great learning experience for me. It not only helped me
                                 solidify my understanding of AI fundamentals, but also sparked my interest in the field
                                 and made me eager to explore more advanced topics in the future. Working on this project
                                 was a challenging and rewarding experience, and I am proud of the AI we developed.</p>
@@ -483,12 +500,60 @@
                         <div class="modal-body">
                             <!-- Project details-->
                             <h2 class="text-uppercase">Smart Vacuum Agent</h2>
-                            <p class="item-intro text-muted">BLA BLA ASPIRO</p>
+                            <p class="item-intro text-muted">Development of a smart vacuum agent living in a mansion, picking up dust and jewels with intelligent pathing</p>
                             <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/6.jpg" alt="..."/>
-                            <p>Lorem ipsum dolor sit amet, consectetur
-                                adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt
-                                repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae,
-                                nostrum, reiciendis facere nemo!</p>
+
+                        <p class="portText">This project was made as part of a course on AI and was done to create an smart agent with
+                                an internal state based on the Belief-Desire-Intention model, progressing in a updating environment. Both the
+                                agent and the environment are executed in parallel in two different threads.</p>
+
+                        <p class="portText">The vacuum moves in an environment represented by a two-dimensional map containing cells,
+                                each of which can contain dust, jewels, or a vacuum. The initial state of the map is determined by randomly
+                                generating objects based on certain rates, and the map is then updated over time using different rates. The
+                                environment is partially observable, meaning that the agent's sensors do not give it access to the state of the
+                                environment at all times. It is also stochastic, meaning that the outcome of an action is not certain, and episodic,
+                                meaning that it is divided into a sequence of independent episodes. The agent's actions are limited to moving in one
+                                of four directions or performing no action, and its performance is measured by the number of steps taken and the
+                                number of objects cleaned up.</p>
+
+                        <p class="portText">The agent is made up of sensors and effectors, as well as an internal state. The sensors,
+                                represented by the Sensor class, are the interface between the agent and the map. They provide the agent with
+                                information about the environment, such as the presence of jewels or dust and the location of the agent on the map.
+                                The effectors, represented by the Effector class, are the actions that the agent can take on the environment. They
+                                include functions like traveling to a specific location and performing a specific action on a cell. The internal
+                                state of the agent includes a list of intentions, metrics about its progress, and a copy of the map. It also has a
+                                boolean value indicating which exploration algorithm to use. The agent's mental state is based on the
+                                Belief-Desire-Intention model, which means it acts rationally and executes actions that maximize its performance
+                                based on its perception of the world and its knowledge. The agent's beliefs are based on the information it
+                                perceives from the environment and its own knowledge, and its desires are its motivation to act, with the ultimate
+                                goal of cleaning the map of all dust. The agent's intentions are the actions it plans to take to achieve its goals.
+                                His performance is defined by a formula taking into account the overall cleanness of the map, the battery used by the
+                                agent and giving penalties for the jewels it vaccumed.</p>
+
+                        <p class="portText">We conducted a series of tests on the agent in order to determine its optimal learning frequency. The
+                                lower this frequency, it will have an optimized path for the dusts existing at the time of the creation of the path,
+                                but will miss out on the dusts that have spawned since then, with the environments running continuously in parallel.
+                                We conducted tests with exploration frequencies ranging from 1 to 5 actions, as well as an infinite frequency,
+                                in order to measure the importance of this parameter. We recorded the performance of the system at various intervals
+                                over different periods in order to obtain a representative measurement. We found that an exploration frequency of 1
+                                resulted in a lot of hesitation on the part of the agent, while higher frequencies allowed it to be more efficient
+                                in cleaning the map.</p>
+
+                        <p class="portText">The agent uses either the BFS or A* algorithms to search for the next action to take.
+                                Both algorithms are implemented in the Graph class and involve creating nodes for the trees and the agent's
+                                intentions, as well as building the solution from the goal node. The BFS algorithm expands each node by visiting all
+                                of its neighbors before visiting the neighbors of those neighbors, while the A* algorithm uses a heuristic function
+                                to prioritize nodes that are closer to the goal. Both algorithms also have a test for the goal and a method for
+                                building the solution from the goal node. The BFS algorithm has a high space complexity due to the large number of
+                                nodes that it generates, but it has a low time complexity due to its simple expansion process. The A* algorithm has
+                                a lower space complexity and a higher time complexity due to the more involved expansion process and use of the
+                                heuristic function.</p>
+
+                        <p class="portText">This project made us create an agent made up of sensors, effectors, and an internal state,
+                                including a list of intentions and metrics about the agent's progress. The agent's mental state is based on the
+                                Belief-Desire-Intention model, which means it acts rationally and executes actions that maximize its performance
+                                based on its perception of the world and its knowledge. The agent uses either the BFS or A* algorithm to search
+                                for the next action to take.</p>
                             <ul class="list-inline">
                                 <li>
                                     <strong>Technologies & Tools :</strong>
@@ -529,13 +594,65 @@
                         <div class="modal-body">
                             <!-- Project details-->
                             <h2 class="text-uppercase">ERP Add-On & Other ERP Projects</h2>
-                            <p class="item-intro text-muted">BLA BLA LUX ONLINE</p>
+                            <p class="item-intro text-muted">These tools were the result of my work during my 6-month internship as an engineer assistant internship at Luxembourg Online</p>
                             <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/7.jpg" alt="..."/>
-                            <p>Lorem ipsum dolor sit amet, consectetur
-                                adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt
-                                repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae,
-                                nostrum, reiciendis facere nemo!</p>
-                            <ul class="list-inline">
+
+                        <p class="portText">During my fourth year internship at the Université de Technologie de Belfort-Montbéliard,
+                                I had the opportunity to work at Luxembourg Online, a company located in the Grand Duchy of Luxembourg.
+                                I joined the software development team at this independent company, which has been a prominent presence in Luxembourg for
+                                over 25 years. While working on a module for managing recruitment, I solidified my web development skills
+                                (HTML, JavaScript, CSS, etc.) and also learned Luxembourg Online's proprietary language, OSL. I also participated
+                                in larger projects, gaining experience and confidence throughout my internship.</p>
+
+                        <p class="portText">My primary task during this internship was developping a tool that would be added to the ERP to help
+                                with the recruitment process in the company, that lacked structure until then. The absence of a dedicated tool not
+                                only hindered the efficiency of the process, but also constituted a very time-consuming task for HR. The main objective
+                                of the recruitment module was the administrative management of applications, and thus to have not only a global
+                                vision of the applications in progress at a given time, but also a history of applications. It is essential to
+                                keep a record of applications as it can, for example, allow a candidate to be contacted again if the position
+                                they applied for is recruiting again.</p>
+
+                        <p class="portText">Another major challenge was to develop a tool that met the needs of
+                                Luxembourg Online's HR while remaining sufficiently general to suit other companies using Luxembourg Online's ERP.
+                                Although the initial objectives were relatively modest, limited to the simple management of positions and
+                                applications, they became more ambitious as I became more familiar with the environment. In fact,
+                                the management of advertisements was later added, then the rating of candidates by targeted users,
+                                the management of interviews, and finally the addition of an automated email and notification system.
+                                As the supplement to be developed had no predecessor, the problem in determining the objectives was not
+                                "how to improve the existing tool", but rather "how to frame the recruitment process while making it easier for
+                                HR to reduce their workload".</p>
+
+                        <p class="portText">Throughout my internship, I tried to put a focus on modernity and user interface. I was always allowed
+                                to develop a first version of my module as I saw fit, before reviewing it with my tutor or a long-time employee,
+                                familiar with the shop and responsible for validating the interfaces of additions to it. Of course, I was not
+                                given free rein : my module still had to fit in with the rest of the ERP and respect its graphic charter.
+                                In fact, the shop is a tool that has been in place for many years and I would describe its interface as "vintage",
+                                which meant I had to create similar elements. Similarly, there are ways of doing things that are deeply ingrained
+                                in the ERP as they are present in many supplements to which I had to conform, although I personally considered
+                                them less effective. In addition, one of the reasons I enjoyed web development was the freedom to do anything -
+                                whether visually with CSS or functionally with JavaScript - but when I had to set up something that already
+                                existed in the shop, my creativity and contribution were restricted. However, my constant
+                                proposals of modernization and improvement ideas bore fruit. Indeed, quite quickly - after a little less than two
+                                months in the company - my tutor considered that my way of seeing and representing things was innovative and
+                                constructive. I therefore had parallel missions to my module to carry out, such as the redesign of the company's
+                                agenda, the creation of a drag and drop area for files, or the design of the user interface of another module.</p>
+
+                        <img class="img-fluid d-block mx-auto" style="margin-bottom:0" src="assets/img/portfolio/gantt_ST40_english.jpg" alt="..."/>
+
+                        <p class="portImgTitle"><i>Gantt diagram of my time at Luxembourg Online</i></p>
+
+                        <p class="portText">I am generally satisfied with the work I have done at Luxembourg Online and the skills I have acquired.
+                                Over the 23 weeks of my internship, I was able to carry out a project from start to finish independently, by
+                                defining a specification, working in collaboration with the main users to design a product that meets their needs,
+                                while ensuring a tool that is sufficiently general to be sold and exploited by any company.
+                                Concretely, this is a module for the ERP that is fully integrated into the latter and consists of 4 pages, allowing
+                                the management of applications, as well as open positions, published advertisements, and platforms receiving these
+                                advertisements.
+                                I also produced a tool that facilitates the download and handling of files within the ERP, which will be added to the
+                                company's style guide and will therefore be reused in other projects.
+                                Finally, I also designed a prototype to improve a crucial tool used daily in many services - the company's agenda,
+                                greatly facilitating its use by adding relevant and problem-specific features.</p>
+                        <ul class="list-inline">
                                 <li>
                                     <strong>Technologies & Tools :</strong>
                                     Luxembourg Online's ERP
@@ -579,24 +696,45 @@
                                 different tutorials related to the UTBM tools
                             </p>
                             <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/8.jpg" alt="..."/>
-                            <p>The development of a website for UTBM to regroup their different tools was a complex and challenging project that
-                                required careful planning and attention to detail. The first step was to define the need
-                                for the redesign, which was driven by a desire to improve the user experience and make
-                                the site more accessible and intuitive. This led to the conception of a new architecture
-                                that would prioritize these goals and provide a strong foundation for the redesign.</p>
 
-                            <p>Next, we carefully considered the technical solutions that would be used to implement
-                                the new design. We selected a modern, responsive framework that would ensure the site
-                                would look great and function smoothly on a wide range of devices. We also made sure to
-                                incorporate feedback from users and stakeholders to ensure that the new design would
-                                meet their needs and expectations.</p>
+                        <p class="portText">The development of a website for UTBM to regroup their different tools was
+                                a complex and challenging project that required careful planning and attention to detail.
+                                The aim was to provide assistance and information on various computer services used within
+                                the educational institution, given a four-month timeframe and the freedom to use any technologies desired,
+                                with the requirement that the site be maintainable and developable by others in the future.
+                                The project focused on user interface design, but also required work on the back-end for the
+                                site to function properly.</p>
 
-                            <p>Throughout the project, we remained focused on achieving our goals and ensuring that the
+                        <p class="portText">After having understood the needs of the future users for this tool, we defined the architecture
+                                our website was going to have and made a prototype based on the architecture. This interactive mock-up of the web
+                                platform was designed to demonstrate the simplified functioning of the site to potential users and was intended
+                                to provide a realistic representation of the final product without requiring actual development work.
+                                It is accessible with the following <a href="https://www.figma.com/proto/o41d8Sw3qWyuC2YL8L69Qv/FAQ-Moodle?node-id=31%3A2&scaling=contain" target="_blank" rel="noopener">link</a>.
+                            </p>
+
+                            <p class="portText">Concerning the database design, the initial design for the database included tables for categories,
+                                articles, and their contents. As the development of the site progressed and we gained more knowledge, we realized that the
+                                database architecture could be simplified. First, by using a MarkDown text editor for the descriptions of articles, which
+                                allowed us to eliminate some tables made superfluous. The final design for the database included tables for categories,
+                                articles, users, media files, settings, and logs, and included an admin user on the MySQL server.</p>
+
+                            <p class="portText">We made several technical choices in the creation of the site.
+                                We used Figma to create prototypes and design systems, as it is lightweight, fast and allows for instant collaboration on files.
+                                For the front-end of the site, we considered multiple JavaScript frameworks including React JS, Angular JS, and Vue JS, as we wanted
+                                a modern, responsive framework that would ensure the website would look great and function smoothly on a wide range of devices.
+                                Ultimately, we chose React JS due to its ability to create interactive user interfaces, define simple views for each state of the
+                                application, and update graphical interface data as it changes in the database. We also used Gatsby JS, a static website generator,
+                                to improve the performance of the website in terms of loading and general functioning.
+                                For the back-end, we used Node.js, particularly the Express framework, and the GraphQL query language for the
+                                management of data. Finally, they chose MySQL for the database management system.</p>
+
+                            <p class="portText">Throughout the project, we remained focused on achieving our goals and ensuring that the
                                 new design would be a success. We consistently tracked progress and made adjustments as
-                                needed to ensure that the final product met our high standards. In the end, the
-                                redesigned website was well-received by users and was a major improvement over the
-                                previous design. Overall, it was a challenging but rewarding project that demonstrated
-                                our ability to successfully tackle complex design challenges.</p>
+                                needed to ensure that the final product met our high standards. In the end, the designed website that we
+                                handed over to UTBM was well-received by users. Overall, it was a challenging but rewarding project that demonstrated
+                                our ability to successfully tackle complex design challenges, as well as making us learn about the relationships
+                                between the different technologies we used. Finally, it was one of our first insights on how to organize large
+                                projects, and the time and effort required for project management, task allocation, and hierarchy in development.</p>
                             <ul class="list-inline">
                                 <li>
                                     <strong>Technologies & Tools :</strong>
@@ -641,32 +779,32 @@
                                 employees of UTBM, re-design of the UI of the online work tool of UTBM "Moodle" to make
                                 it fit with the user needs</p>
                             <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/9.jpg" alt="..."/>
-                            <p>Our project to redesign the UI of UTBM's Moodle resources website was a comprehensive and
+                            <p class="portText">Our project to redesign the UI of UTBM's Moodle resources website was a comprehensive and
                                 thorough process that involved several key steps. It originated from our personal daily
                                 use of Moodle, we found the tool fonctional and well suited for the task, but not it's
                                 User Interface. This is why we focused our approach on user needs, and tried to rethink
                                 the UI around those needs in 4 steps.</p>
 
-                            <p> The first phase was to create a survey to gather user needs and preferences - and assure
+                            <p class="portText"> The first phase was to create a survey to gather user needs and preferences - and assure
                                 ourselves everyone felt the need for a new UI - which we distributed to a large number
                                 of users. This allowed us to get a broad range of feedback that would inform the design
                                 process. As expected, a lot of featured features were only used by 25% of users a couple
                                 of times a month.</p>
 
-                            <p>The second phase was to convene a panel of a dozen different users to discuss the
+                            <p class="portText">The second phase was to convene a panel of a dozen different users to discuss the
                                 results of the survey and provide further input and guidance. This panel was composed of
                                 users with a variety of backgrounds and experience levels, and their insights were
                                 invaluable in shaping the direction of the project.</p>
 
-                            <p>In the third phase, we created a test version of the new Moodle design, incorporating
+                            <p class="portText">In the third phase, we created a test version of the new Moodle design, incorporating
                                 the feedback from the survey and the panel. This allowed us to see how the design would
                                 work in practice and make any necessary adjustments.</p>
 
-                            <p>Finally, we held another meeting with the panel to discuss the test version and get
+                            <p class="portText">Finally, we held another meeting with the panel to discuss the test version and get
                                 their feedback. Based on their comments and suggestions, we made further refinements to
                                 the design before presenting the final version to UTBM for consideration.</p>
 
-                            <p>Overall, the project was a resounding success. UTBM was impressed by the thoroughness
+                            <p class="portText">Overall, the project was a resounding success. UTBM was impressed by the thoroughness
                                 and professionalism of our process, and ultimately decided to implement our revamped
                                 version of Moodle as the official one. We are proud of the work we did and are confident
                                 that the new design will greatly improve the user experience for UTBM students and

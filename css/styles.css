@@ -11542,6 +11542,15 @@ header.masthead .masthead-heading {
   opacity: 0.3;
 }
 
+.portText {
+    text-align: justify;
+    text-indent: 1.5rem;
+}
+
+.portImgTitle {
+    font-size: small;
+}
+
 .timeline {
   position: relative;
   padding: 0;
