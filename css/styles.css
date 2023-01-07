@@ -11304,9 +11304,20 @@ p {
   line-height: 1.75;
 }
 
+#about {
+    padding: 0;
+}
+
+@media (min-width: 576px) {
+    #about {
+        padding: 6rem 0;
+    }
+}
+
 .page-section {
   padding: 6rem 0;
 }
+
 .page-section h2.section-heading, .page-section .section-heading.h2 {
   font-size: 2.5rem;
   margin-top: 0;
@@ -11774,7 +11785,7 @@ header.masthead .masthead-heading {
   gap: 4rem;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 992px) {
     .aboutContainer {
         padding-left: 200px;
         padding-right: 200px;
