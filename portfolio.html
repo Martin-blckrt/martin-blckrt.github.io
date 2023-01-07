@@ -333,11 +333,59 @@
                             <p class="item-intro text-muted">Project including budget management and team management
                                 using the Agile method, based on the development of Machine Learning models able to
                                 predict solar panel production on the French territory</p>
-                            <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/3.jpg" alt="..."/>
-                            <p class="portText">Lorem ipsum dolor sit amet, consectetur
-                                adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt
-                                repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae,
-                                nostrum, reiciendis facere nemo!</p>
+
+                            <iframe style="margin-bottom:1rem;max-width: 100%;display: block !important;margin-right: auto !important;margin-left: auto !important;"width=100% height="464px" src="https://www.youtube.com/embed/Ov0iyuMTEZM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                            <p class="portImgTitle"><i>Video presentation of the project (auto-generated English subtitles work !)</i></p>
+
+                            <p class="portText">This project was made in the Data Science Project course at the Université de Technologie
+                            de Belfort-Montbéliard. We acted as a mini Scrum Team in a company, managing all aspects of the project including
+                            human resources, budget, planning, business model, specifications, communication, and the development process.
+                            Our efforts spanned over a period of 6 months, resulting in the creation of a complete software application.
+                            As a result of our hard work and dedication, we were given the opportunity to present our project to a startup incubator.
+                            </p>
+
+                            <p class="portText">This idea came about after finding a report from UK Power Networks - an electricity distribution system
+                            operator covering part of England - following a feed-in tariff scheme introduced by the UK to encourage electricity
+                            generation using small-scale systems (≤5MW). The associated dataset included over 25 thousand days of collected data in
+                            domestic sites containing solar panels, adding up to over 171 million measurements.
+                            The data wasn't perfect as it contained some missing values making some measurements unusable, but we still had enough
+                            data after cleaning it to stick with this idea.</p>
+
+                            <p class="portText">Before moving forward, we tested the plausibility of our project to predict the electrical production
+                            of solar panels from weather data by implementing a simple Linear Regression model and plotting its predictions.</p>
+
+                            <img class="img-fluid d-block mx-auto" style="margin-bottom:0" src="assets/img/portfolio/simple_regression.png" alt="..."/>
+
+                            <p class="portImgTitle"><i>Comparison between average values predicted by a Linear Regression model and real ones in the test set</i></p>
+
+                            <p class="portText">Although these results were far from perfect, they were good for a basic unoptimized model, so
+                            it encouraged us to keep going, having seen the potential of the project. We then tested 12 different models on the
+                            dataset to see which class of models would perform better, and found out that models based on a Random Forest outperformed
+                            the others.</p>
+
+                            <img class="img-fluid d-block mx-auto" style="margin-bottom:0" src="assets/img/portfolio/model_comparison.png" alt="..."/>
+
+                            <p class="portImgTitle"><i>Comparison of the performance of the differest tested models</i></p>
+
+                            <p class="portText">We then optimized all of the promising models by searching for their optimal hyperparameters using
+                            grid searches. Finally, we decided to use the CatBoost model as it is the one that performed with the most consistency,
+                            as our tests using the Root Mean Squared Error showed.</p>
+
+                            <p class="portText">To showcase this model, we build a product around it, focused on France. We used React and Django
+                            to develop a website aiming to sell our model as a subscription, following the trendy shift of business models from
+                            product to services. Using weather APIs such as OpenWeather and Solcast and a Leaflet map, we only require that the
+                            user selects his location on the map to predict the estimated production, financial gain and other features.</p>
+
+                            <img class="img-fluid d-block mx-auto" style="margin-bottom:0" src="assets/img/portfolio/sequence_diagram.png" alt="..."/>
+
+                            <p class="portImgTitle"><i>Sequence diagram of the website for a prediction</i></p>
+
+                            <p class="portText">This project was a very eye-opening experience as it allowed us to envision the development of a
+                            product, a business model, and more generally, the opportunity to integrate artificial intelligence into a realistic
+                            setting. Exchanging with non-profit organizations to collect solar panel data and meeting with a startup incubator and
+                            thinking about taking this project to the next step was an amazing way to get a glimpse of what being an entrepreneur
+                            requires.</p>
+
                             <ul class="list-inline">
                                 <li>
                                     <strong>Technologies & Tools :</strong>
@@ -378,12 +426,35 @@
                         <div class="modal-body">
                             <!-- Project details-->
                             <h2 class="text-uppercase">Pyspark Distributed Classification</h2>
-                            <p class="item-intro text-muted">BLA BLA PYSPARK</p>
+                            <p class="item-intro text-muted">Reproduction of experiments aiming to demonstrate the scalability of a distributed Decision Tree in Pyspark</p>
                             <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/4.jpg" alt="..."/>
-                            <p class="portText">Lorem ipsum dolor sit amet, consectetur
-                                adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt
-                                repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae,
-                                nostrum, reiciendis facere nemo!</p>
+                            <p class="portText">This project is based on the work presented by Vasile Purdil et Stefan-Gheorghe Pentiuc in their
+                            paper named “MRTree-A Scalable MapReduce Algorithm for Building Decision Trees”, published in 2014.
+                            The aim of the project was to demonstrate the scalability of the distributed version of the Decision Tree model,
+                            which I did in a local Spark environment using a machine with 20 cores, 16GB of RAM and 3.6GHz.</p>
+
+                            <p class="portText">The data I used is the same as in the article, it is a dataset containing unclean data describing
+                            characteristics of persons in order to predict their class of income. It is available following this
+                            <a href="https://archive.ics.uci.edu/ml/datasets/adult" target="_blank" rel="noopener">link</a>. Once the data cleaned,
+                            the dataset contained 14 features and 45222 records, and had a size of about 6 Mo. I then converted all the values into
+                            numerical ones to create a Resilient Distributed Dataset of LabeledPoints to feed to the Decision Tree.</p>
+
+                            <p class="portText">To demonstrate the importance of distribution, I needed a bigger dataset so I scaled it up by duplicating
+                            it up to 50 times. This way, I was able to get the graph below, confirming what the scientific paper described.</p>
+
+                            <img class="img-fluid d-block mx-auto" style="margin-bottom:0" src="assets/img/portfolio/passage_echelle.png" alt="..."/>
+
+                            <p class="portImgTitle"><i>Evolution of the Decision Tree's training time and dataset size in terms of the scaling factor</i></p>
+
+                            <p class="portText">I also carried out different tests during this project, like for example focusing on the variation
+                            of the execution time when changing the number of cores in the local cluster from 4 to 20. As exepected, we can see
+                            that the time decreases with the addition of cores.</p>
+
+                            <p class="portText">This project was a great way to get familiar with PySpark and different distributed notions,
+                            also comparing them to their scikit-learn equivalents in the process. Re-demonstrating the improvements put forward
+                            by the article really shows the importance of distribution in Big Data scenarios and was a first step towards
+                            working in more "realistic" environments, as opposed to working locally on a laptop.</p>
+
                             <ul class="list-inline">
                                 <li>
                                     <strong>Technologies & Tools :</strong>
