@@ -11753,12 +11753,14 @@ section#about .section-heading {
 
 .bigAboutContainer {
   display: flex;
-  margin: 10px 120px 0 120px;
+  /*margin: 10px 120px 0 120px;*/
+  margin-right: var(--bs-gutter-x, 4rem);
+  margin-left: var(--bs-gutter-x, 4rem);
   flex-direction: column;
   align-items: center;
   align-content: center;
   justify-content: space-around;
-  gap: 90px;
+  gap: 8rem;
 }
 
 .aboutSectionTitle {
@@ -11766,16 +11768,35 @@ section#about .section-heading {
   margin-bottom: 2rem;
 }
 
-.layerContainer {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
+@media (min-width: 768px) {
+    .aboutRow {
+        flex-wrap: nowrap;
+    }
 }
 
-.textLeftLayerLeft {
+.aboutRow {
+  align-items: center;
   line-height: 28px;
-  flex: 80vh;
+  display: flex;
+  gap: 4rem;
+}
+
+@media (min-width: 768px) {
+    .aboutContainer {
+        padding-left: 200px;
+        padding-right: 200px;
+    }
+}
+
+.aboutContainer {
+    gap: 8rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.textLeftLayerLeft {
   padding :0 100px 0 100px;
 }
 
