@@ -28,6 +28,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
+                <li class="nav-item"><a class="nav-link" href="" target="_blank" rel="noopener">Resume</a></li>
                 <li class="nav-item"><a class="nav-link" href="skills.html">Skills</a></li>
                 <li class="nav-item"><a class="nav-link" style="color: #ffc800" href="portfolio.html">Portfolio</a></li>
                 <li class="nav-item"><a class="nav-link" href="timeline.html">Timeline</a></li>
@@ -42,7 +43,7 @@
         <div class="text-center">
             <h2 class="section-heading text-uppercase">Portfolio</h2>
             <h3 class="section-subheading text-muted">An overview of my projects - most of the descriptions were made
-                with the assistance of ChatGPT.</h3>
+                with the assistance of ChatGPT, and source codes are available on <a href="https://github.com/Martin-blckrt" target="_blank" rel="noopener">Github</a>.</h3>
         </div>
         <div class="row">
             <div class="col-lg-4 col-sm-6 mb-4">
@@ -238,12 +239,108 @@
                         <div class="modal-body">
                             <!-- Project details-->
                             <h2 class="text-uppercase">Chess Engine</h2>
-                            <p class="item-intro text-muted">Minimax algorithm with performance improvements</p>
+                            <p class="item-intro text-muted">Minimax algorithm with performance improvements using the UCI protocol</p>
                             <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/1.jpg" alt="..."/>
-                            <p class="portText">Lorem ipsum dolor sit amet, consectetur
-                                adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt
-                                repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae,
-                                nostrum, reiciendis facere nemo!</p>
+
+                            <p class="portText">The engine was developed as part of a course on AI at Université du Québec à Chicoutimi. The aim
+                            was to make an Java engine capable of playing every move in under 1 second, and being able to communicate with the Universal
+                            Chess Interface protocol to play in a graphical interface. In order to focus on the algorithm, we used the <i>chesslib</i>
+                            library, providiing us list of legal moves for a position, bitboards, and other useful tools.</p>
+
+                            <p class="portText">To search the game tree, we implemented Minimax, an algorithm used in game theory that aims to
+                            minimize the loss or degradation of a game situation. It involves "virtually" evolving a starting situation and imagining
+                            all possible responses from the opposing player at a given depth (5 for our chess engine). The best outcome is then
+                            chosen and taken back to the
+                            root, which determines the next move to be made. In the game of chess, the tree of possibilities grows quickly because of
+                            the many possibilities available each turn. Therefore, much of the work in this area involves trying to reduce the search
+                            field and optimize the code in order to reduce execution time.</p>
+
+                            <p class="portText">Paired with Minimax, we also used a Quiescence Search to
+                            finish exploring unstable leaf nodes, to help solve the horizon effect. This problem arises in the complex decision trees
+                            of games like chess or go, where the tree is too wide and deep to explore completely, so we must limit our exploration.
+                            However, this has the disadvantage of making us blind to responses that we could have studied in the next iteration.
+                            One way to solve this problem is to detect if a leaf of the tree is "unstable," and perform additional search to
+                            determine the true value of that leaf. In our case, an unstable leaf is one where the previous move was a capture.
+                            For these leaves, we perform a quiescence search and further explore the branch, considering only captures in order to
+                            limit the branching factor. Essentially, if we finish the MiniMax tree exploration with a capture by a queen, this
+                            additional search ensures that the queen will not be captured immediately by a piece covering the one we captured.</p>
+
+                            <p class="portText">In order to be able to explore that much under a second, we implemented numerous optimizations. The
+                            first obvious one is Alpha-Bêta pruning, ensuring that the branches of the tree that do not improve the player's gain
+                            value are pruned.</p>
+
+                            <p class="portText">Alpha-Bêta pruning relying on comparisons, it is possible to increase the number of pruned branches
+                            (and therefore improve performance) by evaluating promising positions as early as possible : this is called Move Ordering.
+                            First, the Most Valuable Victim/Least Valuable Attacker (MVV/LVA) table is used to analyze capturing moves, which assigns
+                            a value based on the piece that is capturing and the piece that is being captured. Therefore, if the victim is a Queen,
+                            the value returned will be higher than if the victim is a Pawn. Then, after considering the victim, we also sort based
+                            on the attacker. It is better to capture a piece with a Pawn than with a Rook, because often the capturing piece is
+                            endangered. The MVV/LVA table handles capturing moves ordering, while non-capturing moves are ordered using two heuristics,
+                            the Killer Move and the History Moves. The first one is based on the concept of the Killer Move, which is a move that
+                            causes pruning. Specifically, if a move threatens a Queen, it will cause significant pruning in the tree because all moves
+                            that do not move or protect the threatened queen will be eliminated. The second one  is the most effective method for
+                            sorting our non-capturing moves because it takes into account the success of moves in the past. Each time a non-capturing
+                            move is successful in causing pruning, its value is increased. This simple concept places moves that have previously caused
+                            cutoffs (and so are likely to do that again) forward.</p>
+
+                            <p class="portText">Another way to reduce the game tree search without pruning is to use Transposition Tables.
+                            This is an optimization that is not reset between calls to MiniMax. Essentially, if a position is explored, we store
+                            a representation of this position - called a Zobrist Hash, which allows us to efficiently store a position and its
+                            information - and the value associated with it. This way, for each position explored during MiniMax, we check beforehand
+                            if we do not already know the position and therefore its value, thus avoiding costly exploration.</p>
+
+                            <p class="portText">Finally, we also used three other pruning methods. Futility pruning is applied when there is a depth
+                            of 3 or less remaining in the search and helps to prune positions that have no potential. For each depth, a value is
+                            associated, and if the evaluation of the position added to this value is less than alpha - or if the evaluation of the
+                            position subtracted from this value is greater than beta - we consider that this position cannot improve the best move :
+                            it can therefore be pruned. Null Move pruning is based on a rather amusing and humiliating concept : if we play a "blank"
+                            move - that is, we do not play and therefore virtually leave two moves to the opponent - and the latter still suffers a
+                            significant enough deficit to cause alpha-beta pruning, then we can prune all of this part of the tree. Delta pruning
+                            is applied only to the Quiescence Search and works roughly the same way as futility pruning. Delta is given a fixed
+                            value, and if the evaluation of a position to which delta is added does not improve the best value, we consider that
+                            this branch is not worth exploring. This helps to avoid exploring unnecessary branches of the tree, which often happens
+                            in the Quiescence Search, which aims to explore all captures.</p>
+
+                            <p class="portText">The other part of exploring the game tree that takes time is to evaluate each position. To do so
+                            efficiently, we decided to implement a "lazy" evaluation for positions that only needed an approximation of the exact score,
+                             and to do an in-depth evaluation when an exact score was required. The lazy evaluation only consists of an evaluation of
+                            the material both sides have.</p>
+
+                            <img class="img-fluid d-block mx-auto" style="margin-bottom:10px" src="assets/img/portfolio/piece_values.jpg" alt="..."/>
+
+                            <p class="portImgTitle"><i>Values given to different pieces based on the "Centipawn" principle</i></p>
+
+                            <p class="portText">In order to weight the values associated with the pieces showed above, we used PSTs (Piece-Square
+                            Tables) for each piece. These are arrays containing 64 entries, one for each square on the chessboard. For each square,
+                            a value - bonus or penalty - is therefore defined that will be added to the value of the piece. In order to be as
+                            exhaustive as possible, we used two PSTs per piece, one for the midgame and one for the endgame. We can therefore see
+                            in the figure opposite, representing the PST of the knight for the midgame, that positions centered on the chessboard,
+                            which therefore control more squares, are valued, and that positions that are very off-center are penalized.</p>
+
+                            <img class="img-fluid d-block mx-auto" style="margin-bottom:10px" src="assets/img/portfolio/pst.jpg" alt="..."/>
+
+                            <p class="portImgTitle"><i>Piece Square Table for the Knight in midgame</i></p>
+
+                            <p class="portText">To separate positions with the same pieces, we also implemented two other evaluations to complete the
+                            material one. The first one concerns the position of the pawns : we slightly penalize doubled pawns, blocked pawns and
+                            isolated pawns. In this way, we do not modify the evaluation enough to influence the material, but with equal material we
+                            favor more advantageous positions. The other one consists of checking which color "controls" each square on the
+                            chessboard : if Whites have more pieces that can go to this square, we will consider that Whites control this square. It
+                            is somewhat a modified Static Exchange Evaluator, which concerns all squares.</p>
+
+                            <p class="portText">Finally, since boards cannot be evaluated the same depending on which game phase we are in, our
+                            evaluation function was inspired by the principle of Tapered Evaluation, which consists of modifying the evaluation
+                            according to the progress of the game. We therefore applied weights to the three types of evaluations that we implement
+                            depending on the phase of the game we are in.</p>
+
+                            <p class="portText">This assignment allowed us to discover the principle of Minimax and its multiple optimizations,
+                            which are popular for adversarial exploration. Even if we had already implemented it during our university course,
+                            it was very formative to start from this already known base and push it so that it reaches its full potential.
+                            We therefore explored several optimization techniques, whether in algorithms or even in pure programming (moderate
+                            use of loops, numerous rereads of the code to avoid duplicating actions, etc). This work, complex but rewarding,
+                            pushed us to go beyond the work required to create an engine that we are very proud to have designed and that
+                            represents a great success for us.</p>
+
                             <ul class="list-inline">
                                 <li>
                                     <strong>Technologies & Tools :</strong>
@@ -284,12 +381,70 @@
                         <div class="modal-body">
                             <!-- Project details-->
                             <h2 class="text-uppercase">PySpark Distributed Random Forest</h2>
-                            <p class="item-intro text-muted">BLA BLA FOREST</p>
+                            <p class="item-intro text-muted">Optimization methods for the Random Forest, especially with significant work on data and on the parallelizations of the algorithm</p>
                             <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/2.jpg" alt="..."/>
-                            <p class="portText">Lorem ipsum dolor sit amet, consectetur
-                                adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt
-                                repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae,
-                                nostrum, reiciendis facere nemo!</p>
+
+                            <p class="portText">This project was made as part of a course on Machine Learning for Big Data.
+                            We explored some of the optimization methods applied to the Random Forest algorithm that were presented in the research
+                            work of Jianguo Chen, Kenli Li, Zhuo Tang, Kashif Bilal, Shui Yu, Chuliang Weng and Keqin Li, who presented a
+                            parallelized version of the Random Forest in a Spark cloud environment. These researchers present their work on this
+                            parallelized Random Forest in an article entitled <i>"A Parallel Random Forest Algorithm for Big Data in a Spark Cloud
+                            Computing Environment"</i>, published in October 2018. This project was made to understand the challenges of machine
+                            learning in a context of Big Data and to present solutions that can address this problem.</p>
+
+                            <p class="portText">The dataset we used came from Kaggle and can be found with this
+                            <a href="https://www.kaggle.com/datasets/debashis74017/stock-market-data-nifty-50-stocks-1-min-data" target="_blank" rel="noopener">link</a>.
+                            It consists of data concerning the NIFTY 100, a well-diversified 100 companies index reflecting overall market conditions
+                            in India. We chose this dataset not only for its concrete and serious data but also its size : it is just under 70 GB
+                            with 66 features. The data was not ready for use, so we had to make a couple of operations on it. First, cleaning it up,
+                            then creating the label our Random Forest was going to predict. We also created weights to balance the model, as well as
+                            do some dimensionnality reduction with Principal Component Analysis to make the data easier to use.</p>
+
+                            <img class="img-fluid d-block mx-auto" style="margin-bottom:10px; width:60%" src="assets/img/portfolio/pca.jpg" alt="..."/>
+
+                            <p class="portImgTitle"><i>Cumulative variance in regard to the number of features, in order to keep over 99% of information</i></p>
+
+                            <p class="portText">To do our tests, we first used a local Spark environment using a machine with 20 cores, 16GB of
+                            RAM and 3.6GHz. However, we quickly realized it was not enough to handle data this size, so we used a cloud solution :
+                            Digital Ocean Droplets with 16GB of RAM and 8 AMD vCPUs. With this configuration, we were able to test different models
+                            on our data, and see the difference between them.</p>
+
+                            <img class="img-fluid d-block mx-auto" style="margin-bottom:10px; width:70%" src="assets/img/portfolio/rf_comp.jpg" alt="..."/>
+
+                            <p class="portImgTitle"><i>Comparison of the execution time and F-measure of the different studied models</i></p>
+
+                            <p class="portText">With this, we were able to come to two conclusions. First, with the similar execution times of
+                            the Random Forest and the Decision Tree, we were able to demonstrate the power of parallelization, as the Forest is
+                            made of many single trees - but they still run in about the same time. Secondly, we tested the pyspark GBTClassifier
+                            model, a model that uses Gradient Boosted Trees. This model, which appeared more recently than the others, works
+                            according to a simple principle : we train a standard decision tree, then train multiple models to predict and correct
+                            the error of the first model. Since this model also uses an ensemble of trees and is supposed to be more performant
+                            than the RandomForestClassifier, we thought it was advisable to try it. However, despite an execution time of 16h 27m
+                            40s, we were forced to stop it before it finished training. This is due to the fact that boosting is a
+                            technique that sequentially combines models and does not favor parallelization.</p>
+
+                            <p class="portText">Concerning data parallelization, we also tried running a scikit-learn model on the data. However,
+                            the transformation of the training dataframe into a Pandas dataframe could not be executed. Indeed, when performing this
+                            task, we try to retrieve the data distributed on the cluster in order to centralize it on a core, which is not robust
+                            enough to support such a large amount of data.</p>
+
+                            <img class="img-fluid d-block mx-auto" style="margin-bottom:10px; width:70%" src="assets/img/portfolio/model_chart.jpg" alt="..."/>
+
+                            <p class="portImgTitle"><i>Execution time of the different models in regard to dataset size</i></p>
+
+                            <p class="portText">This assignment was meant to compare different learning techniques, and several conclusions were
+                            drawn. First, as seen in the article, parallelization should be applied to both tasks
+                            and data. Our comparison between PySpark and scikit-learn showed the importance of distributing data when
+                            working with larger scales, as the non-distributed method was simply unable to handle such large data sets. Second,
+                            we saw the impact of parallelization of calculations in our comparison with Gradient Boosted Trees. While the Random
+                            Forest, which uses the bagging principle, is easily parallelizable to the point that its execution time is almost
+                            equal to that of a Decision Tree, the sequential boosting technique is not well suited (at least in its basic form)
+                            for distribution and therefore for such large data sets. The sequential boosting has a nearly linear curve and
+                            therefore does not scale well to larger sizes, while the parallelized Random Forest has a curve that increases very
+                            little and only changes slightly, demonstrating its resistance to scaling. With these two points in mind, we were able to
+                            conclude that PySpark's distributed system is crucial and that the simplicity and effectiveness of the Random Forest
+                            allows it to maintain a reasonable timeline.</p>
+
                             <ul class="list-inline">
                                 <li>
                                     <strong>Technologies & Tools :</strong>
@@ -354,7 +509,7 @@
                             <p class="portText">Before moving forward, we tested the plausibility of our project to predict the electrical production
                             of solar panels from weather data by implementing a simple Linear Regression model and plotting its predictions.</p>
 
-                            <img class="img-fluid d-block mx-auto" style="margin-bottom:0" src="assets/img/portfolio/simple_regression.png" alt="..."/>
+                            <img class="img-fluid d-block mx-auto" style="margin-bottom:10px;width:70%" src="assets/img/portfolio/simple_regression.png" alt="..."/>
 
                             <p class="portImgTitle"><i>Comparison between average values predicted by a Linear Regression model and real ones in the test set</i></p>
 
@@ -363,7 +518,7 @@
                             dataset to see which class of models would perform better, and found out that models based on a Random Forest outperformed
                             the others.</p>
 
-                            <img class="img-fluid d-block mx-auto" style="margin-bottom:0" src="assets/img/portfolio/model_comparison.png" alt="..."/>
+                            <img class="img-fluid d-block mx-auto" style="margin-bottom:10px;width:60%" src="assets/img/portfolio/model_comparison.png" alt="..."/>
 
                             <p class="portImgTitle"><i>Comparison of the performance of the differest tested models</i></p>
 
@@ -376,7 +531,7 @@
                             product to services. Using weather APIs such as OpenWeather and Solcast and a Leaflet map, we only require that the
                             user selects his location on the map to predict the estimated production, financial gain and other features.</p>
 
-                            <img class="img-fluid d-block mx-auto" style="margin-bottom:0" src="assets/img/portfolio/sequence_diagram.png" alt="..."/>
+                            <img class="img-fluid d-block mx-auto" style="margin-bottom:10px;width:70%" src="assets/img/portfolio/sequence_diagram.png" alt="..."/>
 
                             <p class="portImgTitle"><i>Sequence diagram of the website for a prediction</i></p>
 
@@ -442,7 +597,7 @@
                             <p class="portText">To demonstrate the importance of distribution, I needed a bigger dataset so I scaled it up by duplicating
                             it up to 50 times. This way, I was able to get the graph below, confirming what the scientific paper described.</p>
 
-                            <img class="img-fluid d-block mx-auto" style="margin-bottom:0" src="assets/img/portfolio/passage_echelle.png" alt="..."/>
+                            <img class="img-fluid d-block mx-auto" style="margin-bottom:10px" src="assets/img/portfolio/passage_echelle.png" alt="..."/>
 
                             <p class="portImgTitle"><i>Evolution of the Decision Tree's training time and dataset size in terms of the scaling factor</i></p>
 
@@ -708,7 +863,7 @@
                                 constructive. I therefore had parallel missions to my module to carry out, such as the redesign of the company's
                                 agenda, the creation of a drag and drop area for files, or the design of the user interface of another module.</p>
 
-                        <img class="img-fluid d-block mx-auto" style="margin-bottom:0" src="assets/img/portfolio/gantt_ST40_english.jpg" alt="..."/>
+                        <img class="img-fluid d-block mx-auto" style="margin-bottom:10px" src="assets/img/portfolio/gantt_ST40_english.jpg" alt="..."/>
 
                         <p class="portImgTitle"><i>Gantt diagram of my time at Luxembourg Online</i></p>
 
