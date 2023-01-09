@@ -11803,3 +11803,20 @@ header.masthead .masthead-heading {
   text-align: center;
   color: #ffc800;
 }
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0; /* remove the gap so it doesn't close */
+}
+
+.dropdown:click {
+    border: none;
+}
+
+.dropdown-toggle:click {
+    border: none;
+}
+
+.dropdown-item:hover .nav-link {
+    color: #ffc800;
+}

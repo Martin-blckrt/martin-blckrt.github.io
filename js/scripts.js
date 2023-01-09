@@ -12,6 +12,8 @@ window.addEventListener('DOMContentLoaded', event => {
     // Navbar shrink function
     var navbarShrink = function () {
         const navbarCollapsible = document.body.querySelector('#mainNav');
+        const skillsDropdown = document.body.querySelector('#skillsDropdown');
+        const dropdownItems = document.body.querySelectorAll('.dropdown-item');
         if (!navbarCollapsible) {
             return;
         }
@@ -19,6 +21,20 @@ window.addEventListener('DOMContentLoaded', event => {
             navbarCollapsible.classList.remove('navbar-shrink')
         } else {
             navbarCollapsible.classList.add('navbar-shrink')
+        }
+        if (!skillsDropdown && !dropdownItems) {
+            return;
+        }
+        if (window.scrollY === 0 && ((window.location.href === 'http://127.0.0.1:4000/' || window.location.href === 'http://127.0.0.1:4000/#about') || (window.location.href === 'https://martin-blanckaert.com/' || window.location.href === 'https://martin-blanckaert.com/#about'))) {
+            skillsDropdown.style.backgroundColor = "transparent";
+            dropdownItems.forEach((item) => {
+                item.style.backgroundColor = "transparent";
+            });
+        } else {
+            skillsDropdown.style.backgroundColor = "#212529";
+            dropdownItems.forEach((item) => {
+                item.style.backgroundColor = "transparent";
+            });
         }
     };
 
