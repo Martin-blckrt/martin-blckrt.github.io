@@ -105,7 +105,7 @@ window.addEventListener('DOMContentLoaded', event => {
 window.onload = function() {
 
     var pageTitle = document.title;
-    var attentionMessage = 'Come Back !';
+    var attentionMessage = 'Looking for an internship...';
     var blinkEvent = null;
 
     document.addEventListener('visibilitychange', function(e) {
@@ -126,6 +126,6 @@ window.onload = function() {
             }else {
                 document.title = attentionMessage;
             }
-        }, 3000);
+        }, 5000);
     }
 };
