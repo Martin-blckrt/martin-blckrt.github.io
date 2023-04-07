@@ -101,7 +101,7 @@ window.addEventListener('DOMContentLoaded', event => {
     });
 
 });
-
+/*
 window.onload = function() {
 
     var pageTitle = document.title;
@@ -128,4 +128,4 @@ window.onload = function() {
             }
         }, 5000);
     }
-};
+};*/
