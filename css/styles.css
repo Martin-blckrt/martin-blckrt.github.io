@@ -11569,6 +11569,21 @@ header.masthead .masthead-heading {
   opacity: 0.3;
 }
 
+.portfolio-modal .info-modal {
+  white-space: nowrap;
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  width: 3rem;
+  height: 3rem;
+  cursor: pointer;
+  background-color: transparent;
+  font-size: xx-large;
+}
+.portfolio-modal .info-modal:hover {
+  opacity: 0.3;
+}
+
 .portText {
     text-align: justify;
     text-indent: 1.5rem;

@@ -115,10 +115,8 @@
                 <!-- Portfolio item 1-->
                 <div class="portfolio-item">
                     <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal_news">
-                        <div class="portfolio-hover" style="background: rgb(138 138 136 / 90%)">
-                            <div class="portfolio-hover-content"><h3 class="text-center section-heading"
-                                                                     style="font-size: 1rem;">Project underway, more
-                                information coming soon</h3></div>
+                        <div class="portfolio-hover">
+                            <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                         </div>
                         <img class="img-fluid img-portfolio" src="assets/img/pic%20test/rec%20sys.png" alt="..."/>
                         <!-- <div class="ribbon">UQAC</div>-->
@@ -135,10 +133,8 @@
                 <!-- Portfolio item 2-->
                 <div class="portfolio-item">
                     <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal_pilot">
-                        <div class="portfolio-hover" style="background: rgb(138 138 136 / 90%)">
-                            <div class="portfolio-hover-content"><h3 class="text-center section-heading"
-                                                                     style="font-size: 1rem;">Project underway, more
-                                information coming soon</h3></div>
+                        <div class="portfolio-hover">
+                            <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                         </div>
                         <!-- <div class="ribbon">UQAC</div>-->
                         <img class="img-fluid img-portfolio" src="assets/img/pic%20test/auto%20vehicle.png" alt="..."/>
@@ -208,7 +204,10 @@
             <div class="col-lg-4 col-sm-6 mb-4">
                 <!-- Portfolio item 6-->
                 <div class="portfolio-item">
-                    <a style="pointer-events: none" class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal_vision">
+                    <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal_gan">
+                        <div class="portfolio-hover">
+                            <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                        </div>
                         <!-- <div class="ribbon">UQAC</div>-->
                         <img class="img-fluid img-portfolio" src="assets/img/pic%20test/vision_gan.png" alt="..."/>
                     </a>
@@ -354,12 +353,15 @@
     </div>
 </footer>
 <!-- Portfolio Modals-->
-<!-- Portfolio item 1 modal popup-->
+<!-- Portfolio CHESS modal popup-->
 <div class="portfolio-modal modal fade" id="portfolioModal_chess" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal"/>
+            <div class="info-modal"  data-toggle="tooltip" data-placement="right" title="Duo project">
+                <i class="fa-regular fa-user"></i>
+                <i class="fa-regular fa-user"></i>
             </div>
+            <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal"/></div>
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-lg-8">
@@ -548,7 +550,7 @@
                                 </li>
                                 <li>
                                     <strong>Course :</strong>
-                                    Artificial Intelligence - Université du Québec à Chicoutimi
+                                    Artificial Intelligence - Université du Québec à Chicoutimi (2022)
                                 </li>
                             </ul>
                             <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
@@ -569,12 +571,229 @@
         </div>
     </div>
 </div>
-<!-- Portfolio item 2 modal popup-->
+<!-- Portfolio PILOTNET modal popup-->
+<div class="portfolio-modal modal fade" id="portfolioModal_pilot" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="info-modal"  data-toggle="tooltip" data-placement="right" title="Solo project">
+                <i class="fa-regular fa-user"></i>
+            </div>
+            <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal"/></div>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="modal-body">
+                            <!-- Project details-->
+                            <h2 class="text-uppercase">NVIDIA PilotNet implementation</h2>
+                            <p class="item-intro text-muted">Deep neural network for a lane-following system predicting the steering angle based on NVIDIA's PilotNet paper</p>
+                            <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/pilotnet.jpg" alt="..."/>
+
+                            <p class="portText">Bla bla</p>
+
+                            <img class="img-fluid d-block mx-auto" style="margin-bottom:10px; width:70%"
+                                 src="assets/img/portfolio/model_chart.jpg" alt="..."/>
+
+                            <p class="portImgTitle"><i>Execution time of the different models in regard to dataset
+                                size</i></p>
+
+                            <p class="portText">Conclusion.</p>
+
+                            <ul class="list-inline">
+                                <li>
+                                    <strong>Technologies & Tools :</strong>
+                                    Tensorflow, Keras, Python, Google Cloud Platform, Cloud Run
+                                </li>
+                                <li>
+                                    <strong>Course :</strong>
+                                    Deep Learning - Université du Québec à Chicoutimi (2023)
+                                </li>
+                            </ul>
+                            <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
+                                <i class="fas fa-xmark me-1"></i>
+                                Close Project
+                            </button>
+                            <a href="https://drive.google.com/file/d/1hEGBTpFhsqbpVskBWvmakz0nChiq7H2g/view?usp=sharing"
+                               target="_blank" rel="noopener">
+                                <button class="btn btn-primary btn-xl text-uppercase" type="button">
+                                    <i class="fas fa-up-right-from-square me-1"></i>
+                                    Open Original Report
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Portfolio GAN modal popup-->
+<div class="portfolio-modal modal fade" id="portfolioModal_gan" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="info-modal"  data-toggle="tooltip" data-placement="right" title="Solo project">
+                <i class="fa-regular fa-user"></i>
+            </div>
+            <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal"/></div>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="modal-body">
+                            <!-- Project details-->
+                            <h2 class="text-uppercase">Conditional Deep Convolutional GAN</h2>
+                            <p class="item-intro text-muted">Experiments with GANs and Conditional GANs to create artworks from specific artistic currents</p>
+                            <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/gan.jpg" alt="..."/>
+
+                            <p class="portText">I chose to do this project in the computer vision course while at UQAC mainly because I had
+                                never worked with generative models, but also because they require lots of data and computing power. This
+                                forced me to use <i>cloud computing</i> services and get out of my comfort zone - and step into a more
+                                "realistic" deep learning environment. A more general objective of the project was also to
+                                develop and stick to a methodology, and mine was to take things step by step and gradually increase the
+                                difficulty of the tasks I was attempting.</p>
+
+                            <p class="portText">Although my final goal was to make a conditional Generative Adversarial Network, I started by
+                                "just" developing a GAN from an artwork dataset. I used common architectures of Deep Convolutional GAN
+                                for my generator and discriminator, which are summarized below.</p>
+
+                            <img class="img-fluid d-block mx-auto" style="margin-bottom:10px" src="assets/img/portfolio/generator.png" alt="..."/>
+                            <p class="portImgTitle" style="margin-bottom:50px"><i>Architecture of the generator</i></p>
+                            <img class="img-fluid d-block mx-auto" style="margin-bottom:10px" src="assets/img/portfolio/discriminator.png" alt="..."/>
+                            <p class="portImgTitle"><i>Architecture of the discriminator</i></p>
+
+                            <p class="portText">This worked fairly well, but the dataset contained very unbalanced
+                            classes, which hindered greatly its ability to generate artworks from different styles. For that reason, I switched
+                            to another bigger dataset, that I found on
+                            <a href="https://www.kaggle.com/datasets/sivarazadi/wikiart-art-movementsstyles" target="_blank" rel="noopener">Kaggle</a>.
+                            Although it suffered from unbalanced data as well, the least populated classes contained well over 1000 paintings,
+                            which I deemed enough to get decent results. Using the same architecture as described earlier, the training of the
+                            GAN generated this GIF :</p>
+
+                            <img class="img-fluid d-block mx-auto" style="margin-bottom:30px; width:50%" src="assets/img/portfolio/gan_training.gif" alt="..."/>
+
+                            <p class="portText">I then divided my journey to building a CGAN in three major steps : first, building a CGAN
+                                generating artworks from only two classes with one channel (i.e. a grayscale image), then adding color, and
+                                finally all the classes. Training a CGAN being way longer than training a GAN, this step-by-step process
+                                allowed me to test different configurations while minimizing the wait time between versions.</p>
+
+                            <p class="portText">This strategy allowed me to single out problems with my CGAN implementation, especially one
+                                induced by <i>batch normalization</i>. Given that this process normalizes the activations of a layer on a mini-batch
+                                of inputs, the standardization operation interferes with the storage of conditional information in
+                                normalizing the discriminator entries on the batch. This caused my resulting generated images to be limited to noise,
+                                and did not allow for the discriminator to train. Handling this problem - and others - allowed me to get better
+                                results, and more convincing training processes.</p>
+
+                            <img class="img-fluid d-block mx-auto" style="margin-bottom:10px; width:70%" src="assets/img/portfolio/gan_curve.png" alt="..."/>
+                            <p class="portImgTitle"><i>Training curves of the CGAN</i></p>
+
+                            <p class="portText">However, I still was not satisfied with the conditional information. Although the problems were
+                                probably also caused by insufficient training and too few data, I emphasized the information by scaling it
+                                up as a "fourth" channel using a fully connected layer in the final code to ensure my implementation was not
+                                the problem. The results I obtained were some of the best I got with conditional GANs, but were nowhere near what
+                                I obtained with the basic Generative Adversarial Networks, an example of which you can see at the top of this page.</p>
+
+                            <img class="img-fluid d-block mx-auto" style="margin-bottom:10px; width:70%" src="assets/img/portfolio/cgan_results.png" alt="..."/>
+                            <p class="portImgTitle"><i>Example of results of the CGAN for the Baroque style (left) and Rococo style (right)</i></p>
+
+                            <p class="portText">Although this project did not deliver results-wise, it allowed me to get a grip of GANs, and
+                                continued to make myself more comfortable with Deep Learning. Furthermore, the size of the data and model
+                                parameters made me use GPUs and TPUs for the training through services like Google Colab and Kaggle Notebooks,
+                                which was fairly new to me. The fact that training an iteration of the model took over 8 hours also forced me to
+                                really apply my methodology and think ahead before running code, which is something I often overlook, preferring
+                                to <i>try and retry</i>.</p>
+
+                            <ul class="list-inline">
+                                <li>
+                                    <strong>Technologies & Tools :</strong>
+                                    PyTorch, Python, Google Colab, Kaggle Notebook
+                                </li>
+                                <li>
+                                    <strong>Course :</strong>
+                                    Artificial vision and image treatment - Université du Québec à Chicoutimi (2023)
+                                </li>
+                            </ul>
+                            <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
+                                <i class="fas fa-xmark me-1"></i>
+                                Close Project
+                            </button>
+                            <a href="https://drive.google.com/file/d/1DjE40vlbAlt9X_XEzTUmR1jCnM01qhLV/view?usp=sharing"
+                               target="_blank" rel="noopener">
+                                <button class="btn btn-primary btn-xl text-uppercase" type="button">
+                                    <i class="fas fa-up-right-from-square me-1"></i>
+                                    Open Original Report
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Portfolio NEWS modal popup-->
+<div class="portfolio-modal modal fade" id="portfolioModal_news" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="info-modal"  data-toggle="tooltip" data-placement="right" title="Trio project">
+                <i class="fa-regular fa-user"></i>
+                <i class="fa-regular fa-user"></i>
+                <i class="fa-regular fa-user"></i>
+            </div>
+            <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal"/></div>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="modal-body">
+                            <!-- Project details-->
+                            <h2 class="text-uppercase">News recommendation system</h2>
+                            <p class="item-intro text-muted">Reinforcement learning for a personalized news system recommending real-time scraped news</p>
+                            <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/crisp.jpg" alt="..."/>
+
+                            <p class="portText">Bla bla</p>
+
+                            <img class="img-fluid d-block mx-auto" style="margin-bottom:10px; width:70%"
+                                 src="assets/img/portfolio/model_chart.jpg" alt="..."/>
+
+                            <p class="portImgTitle"><i>Execution time of the different models in regard to dataset
+                                size</i></p>
+
+                            <p class="portText">Conclusion.</p>
+
+                            <ul class="list-inline">
+                                <li>
+                                    <strong>Technologies & Tools :</strong>
+                                    PyTorch, Python, Trello, Azure, HTML/CSS/JS, NoSQL
+                                </li>
+                                <li>
+                                    <strong>Course :</strong>
+                                    AI Practical Workshop - Université du Québec à Chicoutimi (2023)
+                                </li>
+                            </ul>
+                            <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
+                                <i class="fas fa-xmark me-1"></i>
+                                Close Project
+                            </button>
+                            <a href="https://drive.google.com/file/d/13Nm7_JdpsO21myQ13bS20nqo-INm0H7w/view?usp=share_link"
+                               target="_blank" rel="noopener">
+                                <button class="btn btn-primary btn-xl text-uppercase" type="button">
+                                    <i class="fas fa-up-right-from-square me-1"></i>
+                                    Open Original Report
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Portfolio RANDOM FOREST modal popup-->
 <div class="portfolio-modal modal fade" id="portfolioModal_forest" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal"/>
+            <div class="info-modal"  data-toggle="tooltip" data-placement="right" title="Duo project">
+                <i class="fa-regular fa-user"></i>
+                <i class="fa-regular fa-user"></i>
             </div>
+            <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal"/></div>
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-lg-8">
@@ -696,7 +915,7 @@
                                 </li>
                                 <li>
                                     <strong>Course :</strong>
-                                    Machine Learning for Big Data - Université du Québec à Chicoutimi
+                                    Machine Learning for Big Data - Université du Québec à Chicoutimi (2022)
                                 </li>
                             </ul>
                             <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
@@ -717,12 +936,18 @@
         </div>
     </div>
 </div>
-<!-- Portfolio item 3 modal popup-->
+<!-- Portfolio SOLAR PANEL modal popup-->
 <div class="portfolio-modal modal fade" id="portfolioModal_solar" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal"/>
+            <div class="info-modal"  data-toggle="tooltip" data-placement="right" title="Group of 5 project">
+                <i class="fa-regular fa-user"></i>
+                <i class="fa-regular fa-user"></i>
+                <i class="fa-regular fa-user"></i>
+                <i class="fa-regular fa-user"></i>
+                <i class="fa-regular fa-user"></i>
             </div>
+            <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal"/></div>
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-lg-8">
@@ -826,7 +1051,7 @@
                                 </li>
                                 <li>
                                     <strong>Course :</strong>
-                                    Data Science Project - Université de Technologie de Belfort-Montbéliard
+                                    Data Science Project - Université de Technologie de Belfort-Montbéliard (2022)
                                 </li>
                             </ul>
                             <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
@@ -847,13 +1072,15 @@
         </div>
     </div>
 </div>
-<!-- Portfolio item 4 modal popup-->
+<!-- Portfolio PYSPARK modal popup-->
 <div class="portfolio-modal modal fade" id="portfolioModal_classification" tabindex="-1" role="dialog"
      aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal"/>
+            <div class="info-modal"  data-toggle="tooltip" data-placement="right" title="Solo project">
+                <i class="fa-regular fa-user"></i>
             </div>
+            <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal"/></div>
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-lg-8">
@@ -915,7 +1142,7 @@
                                 </li>
                                 <li>
                                     <strong>Course :</strong>
-                                    Machine Learning for Big Data - Université du Québec à Chicoutimi
+                                    Machine Learning for Big Data - Université du Québec à Chicoutimi (2022)
                                 </li>
                             </ul>
                             <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
@@ -936,12 +1163,16 @@
         </div>
     </div>
 </div>
-<!-- Portfolio item 5 modal popup-->
+<!-- Portfolio LOVE LETTER modal popup-->
 <div class="portfolio-modal modal fade" id="portfolioModal_loveletter" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal"/>
+            <div class="info-modal"  data-toggle="tooltip" data-placement="right" title="Trio project">
+                <i class="fa-regular fa-user"></i>
+                <i class="fa-regular fa-user"></i>
+                <i class="fa-regular fa-user"></i>
             </div>
+            <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal"/></div>
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-lg-8">
@@ -1022,7 +1253,7 @@
                                 <li>
                                     <strong>Course :</strong>
                                     Introduction to Artificial Intelligence - Université de Technologie de
-                                    Belfort-Montbéliard
+                                    Belfort-Montbéliard (2020)
                                 </li>
                             </ul>
                             <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
@@ -1043,12 +1274,15 @@
         </div>
     </div>
 </div>
-<!-- Portfolio item 6 modal popup-->
+<!-- Portfolio ROOMBA modal popup-->
 <div class="portfolio-modal modal fade" id="portfolioModal_vacuum" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal"/>
+            <div class="info-modal"  data-toggle="tooltip" data-placement="right" title="Duo project">
+                <i class="fa-regular fa-user"></i>
+                <i class="fa-regular fa-user"></i>
             </div>
+            <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal"/></div>
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-lg-8">
@@ -1157,7 +1391,7 @@
                                 </li>
                                 <li>
                                     <strong>Course :</strong>
-                                    Artificial Intelligence - Université du Québec à Chicoutimi
+                                    Artificial Intelligence - Université du Québec à Chicoutimi (2022)
                                 </li>
                             </ul>
                             <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
@@ -1178,12 +1412,14 @@
         </div>
     </div>
 </div>
-<!-- Portfolio item 7 modal popup-->
+<!-- Portfolio ERP modal popup-->
 <div class="portfolio-modal modal fade" id="portfolioModal_erp" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal"/>
+            <div class="info-modal"  data-toggle="tooltip" data-placement="right" title="Solo project">
+                <i class="fa-regular fa-user"></i>
             </div>
+            <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal"/></div>
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-lg-8">
@@ -1297,7 +1533,7 @@
                                 </li>
                                 <li>
                                     <strong>Part of :</strong>
-                                    6-month internship at Luxembourg Online
+                                    6-month internship at Luxembourg Online (2021)
                                 </li>
                             </ul>
                             <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
@@ -1318,12 +1554,15 @@
         </div>
     </div>
 </div>
-<!-- Portfolio item 8 modal popup-->
+<!-- Portfolio UTBM WEBSITE modal popup-->
 <div class="portfolio-modal modal fade" id="portfolioModal_website" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal"/>
+            <div class="info-modal"  data-toggle="tooltip" data-placement="right" title="Duo project">
+                <i class="fa-regular fa-user"></i>
+                <i class="fa-regular fa-user"></i>
             </div>
+            <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal"/></div>
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-lg-8">
@@ -1409,7 +1648,7 @@
                                 </li>
                                 <li>
                                     <strong>Course :</strong>
-                                    Development Project - Université de Technologie de Belfort-Montbéliard
+                                    Development Project - Université de Technologie de Belfort-Montbéliard (2021)
                                 </li>
                             </ul>
                             <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
@@ -1430,12 +1669,15 @@
         </div>
     </div>
 </div>
-<!-- Portfolio item 9 modal popup-->
+<!-- Portfolio MOODLE modal popup-->
 <div class="portfolio-modal modal fade" id="portfolioModal_moodle" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal"/>
+            <div class="info-modal"  data-toggle="tooltip" data-placement="right" title="Duo project">
+                <i class="fa-regular fa-user"></i>
+                <i class="fa-regular fa-user"></i>
             </div>
+            <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal"/></div>
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-lg-8">
@@ -1489,7 +1731,7 @@
                                 </li>
                                 <li>
                                     <strong>Course :</strong>
-                                    Inter-semester activity - Université de Technologie de Belfort-Montbéliard
+                                    Inter-semester activity - Université de Technologie de Belfort-Montbéliard (2021)
                                 </li>
                             </ul>
                             <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
