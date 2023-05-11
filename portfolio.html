@@ -588,15 +588,74 @@
                             <p class="item-intro text-muted">Deep neural network for a lane-following system predicting the steering angle based on NVIDIA's PilotNet paper</p>
                             <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/pilotnet.jpg" alt="..."/>
 
-                            <p class="portText">Bla bla</p>
+                            <p class="portText">PilotNet is a project first issued by NVIDIA in 2016 in the paper
+                                <a href="https://arxiv.org/pdf/1604.07316.pdf" target="_blank" rel="noopener">
+                                    "End to End Learning for Self-Driving Cars"</a>. It is a neural network trained on data coming from cameras located on
+                                top of a car, associated with the corresponding steering wheel angle. The goal of the network is simply to predict the
+                                correct steering angle for the camera picture. While this project obviously has limitations - there is no notion of
+                                speed although that impacts the angle in real life - it is a first step towards autonomous driving, and was a
+                                great project for my Deep Learning course at UQAC.
+                            </p>
+
+                            <p class="portText">I found two datasets - containing over 45 thousand images - thanks to links provided on the
+                                following GitHub : SullyChen/driving-datasets. I also did not have to think too hard to build a model : the
+                                original NVIDIA paper contained the exact model they used, which was perfect for my first real deep learning
+                                project. It is a deep convolutional neural network that is described in the image below.
+                            </p>
+
+                            <img class="img-fluid d-block mx-auto" style="margin-bottom:10px"
+                                 src="assets/img/portfolio/pilotnet_model.png" alt="..."/>
+
+                            <p class="portImgTitle"><i>PilotNet model created by NVIDIA</i></p>
+
+                            <p class="portText">The main issues I faced during this project was training the model. The large amount
+                                of data, combined with the important number of trainable variables as well as the difficulty of the task
+                                made it challenging to perform this task while working with little to no budget. I however had a Google Cloud
+                                free trial, and I invested every last penny of it using <i>TensorFlow Cloud</i>, a Google Cloud Platform
+                                service allowing users to deploy deep learning models on cloud infrastructures, while accessing and outputting
+                                data from a bucket. With this service, I had access to 4 Tesla P100 GPUs - which took me as far as 8 epochs
+                                in the model training.
+                            </p>
+
+                            <p class="portText">Although this training was very disappointing - I was initially planning on training the model
+                                on at least 20 epochs - the model still performed relatively well. To have a more visual way of evaluating
+                                the results (seeing the image and having the value of the angle is tough to interpret), I created a simple loop :
+                                loading an image, predicting the angle, then showing the image with a steering wheel image rotated to the predicted
+                                angle. By looping as fast as the model prediction allows it, you get a realistic view of what's going on - and
+                                can easily evaluate the quality of the results. Using this method, I was able to see that my model performed
+                                relatively well, although it had a tendency to steer left.
+                            </p>
 
                             <img class="img-fluid d-block mx-auto" style="margin-bottom:10px; width:70%"
-                                 src="assets/img/portfolio/model_chart.jpg" alt="..."/>
+                                 src="assets/img/portfolio/pilotnet_visu.gif" alt="..."/>
 
-                            <p class="portImgTitle"><i>Execution time of the different models in regard to dataset
-                                size</i></p>
+                            <p class="portImgTitle"><i>Example of the visualization of the problem at hand</i></p>
 
-                            <p class="portText">Conclusion.</p>
+                            <p class="portText">Seeing the results - especially the "weird" angles sometimes predicted - naturally made me wonder
+                                why the model took such decisions. To try and limit this black box effect, I implemented saliency maps. They are
+                                a graphical representation of the zones of the image having the most influence on the output of a CNN. I used
+                                the Blur Integrated Gradients method to compute the model's saliency map for each image and, using the same
+                                visualization process as described before, I was able to see the elements on which the model was basing itself
+                                to make its prediction.
+                            </p>
+
+                            <img class="img-fluid d-block mx-auto" style="margin-bottom:10px; width:70%"
+                                 src="assets/img/portfolio/saliency.png" alt="..."/>
+
+                            <p class="portImgTitle"><i>Saliency map plotted as heatmap over the original image. The prediction is quite good,
+                            the model is basing itself on the white lines either side of the car, the middle separator and the trees/sky in
+                            the background.</i></p>
+
+                            <p class="portText">There are many ways to improve this project and take it to the next level,
+                                I unfortunately did not have the time to pursue them since I struggled so much with the training. I would have loved
+                                to incorporate the speed of the vehicle as well as other basic car information to make the project more realistic,
+                                or even hook it up to a driving environment simulator and see my car progress in a simulated city. However, this
+                                was one of my favorite projects so far : not only was I challenged by the complexity of training a model of this
+                                caliber, it also had a fun dimension in the plotting of the results and seeing the saliency maps for the bad
+                                predictions. Working on the PilotNet project allowed me to get more familiar with TensorFlow but also to get
+                                a first experience on a reality of the deep learning process I wasn't familiar yet : deploying models on cloud
+                                infrastructures.
+                            </p>
 
                             <ul class="list-inline">
                                 <li>
@@ -745,17 +804,50 @@
                             <!-- Project details-->
                             <h2 class="text-uppercase">News recommendation system</h2>
                             <p class="item-intro text-muted">Reinforcement learning for a personalized news system recommending real-time scraped news</p>
-                            <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/crisp.jpg" alt="..."/>
+                            <img class="img-fluid d-block mx-auto" style="width:70%" src="assets/img/portfolio/crisp.jpg" alt="..."/>
 
-                            <p class="portText">Bla bla</p>
+                            <p class="portText">This project was made in a Practical Workshop course, aiming to create a complete product
+                                and fitting into a market in order to meet a user need. Being three students in AI and having never worked
+                                with reinforcement learning, it is quite naturally we chose to work on a tech news recommendation system.
+                                We wanted to ally the efficiency and source diversity of newsletters with the availability and "infinity"
+                                of news brought by websites like Google News, Apple News, etc. We worked on this project with the CRISP-DM
+                                methodology, that is summarized in the figure above.
+                            </p>
+
+                            <p class="portText">Our data was constituted from various sources : Twitter API, Reddit API, GNews API and News API.
+                                We then preprocessed the data before merging them all and uploading them into a database hosted on the Microsoft
+                                Azure service. All of these tasks were automated, which allowed a continuous flow of news into the database while
+                                the older ones were removed to ensure relevancy.
+                            </p>
+
+                            <p class="portText">We decided to use a Deep Q Network to recommend the news, a model that is part of the family of
+                                value-based algorithms : it tries to maximise its long term reward. In our case, since we positioned our
+                                product as a gateway to access news, we were trying to maximise the number of news the user clicked on
+                                (i.e. was interested in). The final product consisted in a simple purified UI, which recommended batches of
+                                10 news. When the user disconnected or asked for a new batch, the news that were ignored got a penalty,
+                                while the others got a reward. This way, by using the interface on a long-term basis, the users got
+                                recommended news similar to those they usually clicked on.
+                            </p>
 
                             <img class="img-fluid d-block mx-auto" style="margin-bottom:10px; width:70%"
-                                 src="assets/img/portfolio/model_chart.jpg" alt="..."/>
+                                 src="assets/img/portfolio/yourtechwave.png" alt="..."/>
 
-                            <p class="portImgTitle"><i>Execution time of the different models in regard to dataset
-                                size</i></p>
+                            <p class="portImgTitle"><i>Screenshot of the final product</i></p>
 
-                            <p class="portText">Conclusion.</p>
+                            <p class="portText">The main problem we faced with the data was to ensure its quality, especially with the social
+                                networks' APIs. Since the goal was to have an automated routine, manually checking the data was not a possibility,
+                                and the tools we had to filter data were sometimes insufficient to prevent "random" posts from entering our
+                                system (for example, a meme getting a lot of traction posted on Twitter with "#ChatGPT"). However, the part we
+                                struggled the most with was evaluating our model. The DQN trying to maximize long-term reward, we had to set
+                                its parameters to make it as greedy as possible to try and see immediate reactions to our actions, which is not
+                                the way it is intended to use - making it tough to evaluate the model.</p>
+
+                            <p class="portText">This course being oriented as a "professional" project, it was very different to other projects
+                                I have done during my education. Not only did we work with the CRISP-DM methodology, we also assessed the current
+                                market for our product, developed a marketing strategy, etc. The tradeoff to spending some time on the business
+                                aspect of things was sacrificing the technical part : we only got an overview of reinforcement learning. However,
+                                it was great practising how to market a product and how to use professional tools like Microsoft Azure as it is
+                                a rare opportunity in technical studies.</p>
 
                             <ul class="list-inline">
                                 <li>
