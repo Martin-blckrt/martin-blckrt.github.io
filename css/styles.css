@@ -11581,6 +11581,7 @@ header.masthead .masthead-heading {
   cursor: pointer;
   background-color: transparent;
   font-size: xx-large;
+  pointer-events: none;
 }
 .portfolio-modal .info-modal:hover {
   opacity: 0.3;
@@ -11866,4 +11867,11 @@ header.masthead .masthead-heading {
     padding: 0.5rem;
     background: #f8f9fa;
     border: 2px solid #FFC800;
+}
+
+.tag {
+  position: relative;
+  bottom: -20px;
+  color: #f8f9fa !important;
+  opacity: 80%;
 }
