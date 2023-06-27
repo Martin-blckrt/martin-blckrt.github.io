@@ -1042,19 +1042,41 @@
                                 same activities in the same order.
                             </p>
 
-                            <img class="img-fluid d-block mx-auto" style="style=" margin-bottom:0.5rem"
-                            src="assets/img/portfolio/sensor_plot.jpg" alt="..."/>
+                            <img class="img-fluid d-block mx-auto" style="margin-bottom:0.5rem"
+                                 src="assets/img/portfolio/sensor_plot.jpg" alt="..."/>
 
                             <p class="portImgTitle"><i>Accelerometer data plotted as time series and Kernel Density
                                 Estimate</i></p>
 
-                            <p class="portText">pre-treating/treating/crossval
+                            <p class="portText">To use the data, I first had to treat it by applying a couple of
+                                operations. After the traditional machine learning pre-treatment, I converted the data
+                                to reduce the size of the dataset. The sensors collecting the data every 33
+                                milliseconds, I converted the dataset by summarizing chunks of 30 values (i.e. every 1
+                                second) with statistics for every sensor over that second. I extracted 7 values
+                                from each sensor : mean, maximum, minimum, standard deviation, median, skewness and
+                                kurtosis. I also only kept the data that had only one activity on the chunk, which
+                                represented a loss of less than 15% of the data and greatly simplified the problem.
                             </p>
 
-                            <p class="portText">machine learning models
+                            <p class="portText">In order to get a better idea of which type of models would perform the
+                                best on the task at hand, I tried some simple machine learning models belonging to
+                                different families of algorithms. With the results I got, I decided to go forward with
+                                the Random Forest and XGBoost algorithms, leaving aside the K-Nearest Neighbors,
+                                Gaussian Naive-Bayes, Decision Tree and Gradient Boosted Trees algorithms.
                             </p>
 
-                            <p class="portText">RF/XGBOOST/FEATURE SELEC
+                            <p class="portText">This project aiming to discover techniques and tools, I didn't want to
+                                spend a lot of time running Grid Searches and to try to optimize those models, I simply
+                                ran some tests on the main parameters of the algorithms to find the best compromises
+                                between performance and execution time. For example, on the graph below, we can see that
+                                a depth of 20 is enough for the Random Forest to get decent performance.
+                            </p>
+
+                            <img class="img-fluid d-block mx-auto" style="margin-bottom:0.5rem;width: 70%"
+                                 src="assets/img/portfolio/rf_depth.png" alt="..."/>
+
+
+                            <p class="portText">feature selec
                             </p>
 
                             <p class="portText">deep learning models
