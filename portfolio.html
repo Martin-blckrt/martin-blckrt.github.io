@@ -1048,8 +1048,8 @@
                             <p class="portImgTitle"><i>Accelerometer data plotted as time series and Kernel Density
                                 Estimate</i></p>
 
-                            <p class="portText">To use the data, I first had to treat it by applying a couple of
-                                operations. After the traditional machine learning pre-treatment, I converted the data
+                            <p class="portText">To use the data, I first had to process it by applying a couple of
+                                operations. After the traditional machine learning pre-processing, I converted the data
                                 to reduce the size of the dataset. The sensors collecting the data every 33
                                 milliseconds, I converted the dataset by summarizing chunks of 30 values (i.e. every 1
                                 second) with statistics for every sensor over that second. I extracted 7 values
@@ -1076,19 +1076,40 @@
                                  src="assets/img/portfolio/rf_depth.png" alt="..."/>
 
 
-                            <p class="portText">feature selec
+                            <p class="portText">In order to further simplify the data and to make the execution times
+                                faster, I used different techniques of feature selection. The one that worked the best
+                                was the <i>Feature Selector</i> library, which got rid of over 75% of features for the
+                                Random
+                                Forest, and even more than that for XGBoost. The accuracy of the models actually
+                                improved with less features, demonstrating the <i>curse of dimensionality</i>
+                                phenomenon.
                             </p>
 
-                            <p class="portText">deep learning models
+                            <p class="portText">Since I had explored some classical machine learning models, I also
+                                wanted to look into some deep learning models. However, it became quite clear that
+                                those models were too complicated for my problem. Indeed, the Bi-Directional Long
+                                Short-Term Memory, 1-Dimensional and Multi-Headed Convolutional Neural Networks that I
+                                tried faced a major issue : they took a lot of training to understand the problem. In
+                                a relatively easy problem such as the one at hand, the trade-off between performance and
+                                execution time is way better with machine learning than with deep learning.
                             </p>
 
-                            <p class="portText">sktime library
+                            <p class="portText">To be sure whether my implementation of those algorithms was the
+                                problem, I also used the <i>Sktime</i> library, with a CNNClassifier and a
+                                RocketClassifier instance. This library requires the data to be in a certain format, and
+                                then automatically extracts the information it needs. With both models, I got the same
+                                results as in my own implementations : the classifiers need a lot of training to get
+                                decent results - especially since I only ran computations on CPU.
                             </p>
 
-                            <p class="portText">data comparison
-                            </p>
-
-                            <p class="portText">conclusion
+                            <p class="portText">This project was made over a span of 2 months, which limited my
+                                methodology to be exploration-oriented and not result-oriented. Furthermore, the
+                                dataset used is a benchmark for multivariate human activity classification, which
+                                can be used in different ways. With the way I processed it, it contains high data
+                                imbalance, which made it "easy" for the algorithms to get decent results by always
+                                classifying the predominant class. However, this project allowed me to get a better
+                                understanding of how to deal with time series data, as well as to think about the
+                                opposition between deep learning and classical machine learning algorithms.
                             </p>
 
                             <ul class="list-inline">
@@ -1621,7 +1642,7 @@
                                 </li>
                                 <li>
                                     <strong>Course :</strong>
-                                    Artificial vision and image treatment - Université du Québec à Chicoutimi (2023)
+                                    Artificial vision and image processing - Université du Québec à Chicoutimi (2023)
                                 </li>
                             </ul>
                             <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
