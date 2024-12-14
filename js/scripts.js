@@ -101,6 +101,93 @@ window.addEventListener('DOMContentLoaded', event => {
     });
 
 });
+
+// RESUME MODAL SECTION
+function openModal() {
+    document.getElementById("backdrop").style.display = "block"
+    document.getElementById("resumeModal").style.display = "block"
+    document.getElementById("resumeModal").classList.add("show")
+}
+
+function closeModal() {
+    document.getElementById("backdrop").style.display = "none"
+    document.getElementById("resumeModal").style.display = "none"
+    document.getElementById("resumeModal").classList.remove("show")
+}
+
+// Get the modal
+var modal = document.getElementById('resumeModal');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function (event) {
+    if (event.target === modal) {
+        closeModal()
+    }
+}
+
+// HEADER & FOOTER
+function highlightActiveNavLink() {
+    const navLinks = document.querySelectorAll('.nav-link'); // Select all navigation links
+    const currentPath = window.location.href; // Get the current page path
+
+    navLinks.forEach(link => {
+        // Check if the link's href matches the current path
+        if (link.href === currentPath) {
+            link.style.color = '#ffc800'; // Apply the active style
+        } else {
+            link.style.color = ''; // Reset the color for other links
+        }
+    });
+}
+
+const navPlaceholder = document.getElementById('mainNav');
+const cachedNav = localStorage.getItem('nav');
+if (cachedNav) {
+    navPlaceholder.innerHTML = cachedNav;
+    navPlaceholder.style.visibility = 'visible';
+}
+
+const resumePlaceholder = document.getElementById('resumeModal');
+const cachedResume = localStorage.getItem('resume');
+if (cachedResume) {
+    resumePlaceholder.innerHTML = cachedResume;
+    resumePlaceholder.style.visibility = 'visible';
+}
+
+const footerPlaceholder = document.getElementById('footer-placeholder');
+const cachedFooter = localStorage.getItem('footer');
+if (cachedFooter) {
+    footerPlaceholder.innerHTML = cachedFooter;
+    footerPlaceholder.style.visibility = 'visible';
+}
+
+fetch('components/navigation.html')
+    .then(response => response.text())
+    .then(data => {
+        navPlaceholder.innerHTML = data;
+        navPlaceholder.style.visibility = 'visible';
+        localStorage.setItem('nav', data);
+        highlightActiveNavLink();
+    })
+    .catch(error => console.error('Error loading navigation:', error));
+fetch('components/resume.html')
+    .then(response => response.text())
+    .then(data => {
+        resumePlaceholder.innerHTML = data;
+        resumePlaceholder.style.visibility = 'visible';
+        localStorage.setItem('resume', data);
+        highlightActiveNavLink();
+    })
+    .catch(error => console.error('Error loading resume:', error));
+fetch('components/footer.html')
+    .then(response => response.text())
+    .then(data => {
+        footerPlaceholder.innerHTML = data;
+        footerPlaceholder.style.visibility = 'visible';
+        localStorage.setItem('footer', data);
+        highlightActiveNavLink();
+    })
+    .catch(error => console.error('Error loading footer:', error));
 /*
 window.onload = function() {
 
