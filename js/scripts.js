@@ -17,24 +17,10 @@ window.addEventListener('DOMContentLoaded', event => {
         if (!navbarCollapsible) {
             return;
         }
-        if (window.scrollY === 0 && ((window.location.href === 'http://127.0.0.1:4000/' || window.location.href === 'http://127.0.0.1:4000/#about') || (window.location.href === 'https://martin-blanckaert.com/' || window.location.href === 'https://martin-blanckaert.com/#about'))) {
+        if (window.scrollY === 0) {
             navbarCollapsible.classList.remove('navbar-shrink')
         } else {
             navbarCollapsible.classList.add('navbar-shrink')
-        }
-        if (!skillsDropdown && !dropdownItems) {
-            return;
-        }
-        if (window.scrollY === 0 && ((window.location.href === 'http://127.0.0.1:4000/' || window.location.href === 'http://127.0.0.1:4000/#about') || (window.location.href === 'https://martin-blanckaert.com/' || window.location.href === 'https://martin-blanckaert.com/#about'))) {
-            skillsDropdown.style.backgroundColor = "transparent";
-            dropdownItems.forEach((item) => {
-                item.style.backgroundColor = "transparent";
-            });
-        } else {
-            skillsDropdown.style.backgroundColor = "#212529";
-            dropdownItems.forEach((item) => {
-                item.style.backgroundColor = "transparent";
-            });
         }
     };
 
@@ -76,7 +62,7 @@ window.addEventListener('DOMContentLoaded', event => {
         mailIcon.addEventListener('mouseenter', () => {
             const contactMe = document.body.querySelector('#contactMe');
             if (contactMe) {
-                contactMe.innerHTML = "My email : martin.blanckaert@utbm.fr";
+                contactMe.innerHTML = "My email : martinblanckaert@yahoo.fr";
             };
         });
         mailIcon.addEventListener('mouseleave', () => {
