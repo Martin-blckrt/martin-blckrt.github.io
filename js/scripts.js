@@ -159,15 +159,11 @@ function highlightActiveNavLink() {
     const currentPath = window.location.href; // Get the current page path
 
     navLinks.forEach(link => {
-        console.log("current", currentPath)
-        console.log("link", link)
         // Check if the link's href matches the current path
         if (link.href.split('#')[0] === currentPath.split('#')[0] && link.href.split('#')[1] == null) {
             link.classList.add("active")
-            //link.style.color = '#ffc800'; // Apply the active style
         } else {
             link.classList.remove("active")
-            //link.style.color = ''; // Reset the color for other links
         }
     });
 }
