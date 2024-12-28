@@ -3032,15 +3032,22 @@ textarea.form-control-lg {
 }
 
 .btn-primary {
-  color: #fff;
-  background-color: #ffc800;
-  border-color: #ffc800;
+  color: #fff; /* White text color */
+  background-color: #212529; /* Black background color */
+  border: none; /* Remove border */
+  border-radius: 25px; /* Rounded edges for a pill shape */
+  padding: 0.75rem 2.5rem; /* Adjust padding for size */
+  font-size: 0.75rem; /* Adjust font size */
+  display: inline-block; /* Ensure proper sizing */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth hover effects */
+  text-align: center; /* Center align text */
 }
+
 .btn-primary:hover {
-  color: #fff;
-  background-color: #d9aa00;
-  border-color: #cca000;
+  background-color: #333; /* Slightly lighter black for hover */
+  color: #fff; /* Keep text white */
 }
+
 .btn-check:focus + .btn-primary, .btn-primary:focus {
   color: #fff;
   background-color: #d9aa00;
@@ -3062,15 +3069,25 @@ textarea.form-control-lg {
 }
 
 .btn-secondary {
-  color: #fff;
-  background-color: #6c757d;
-  border-color: #6c757d;
+  color: #212529; /* Black text color */
+  background-color: #e0e0e0; /* Light gray background */
+  border: none; /* Remove border */
+  border-radius: 25px; /* Rounded edges for a pill shape */
+  padding: 0.5rem 1.5rem; /* Adjust padding for size */
+  text-transform: none; /* Normal text (no uppercase) */
+  font-size: 0.85rem; /* Adjust font size */
+  font-weight: bold; /* Bold text */
+  display: inline-block; /* Ensure proper sizing */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth hover effects */
+  text-align: center; /* Center align text */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add subtle shadow */
 }
+
 .btn-secondary:hover {
-  color: #fff;
-  background-color: #5c636a;
-  border-color: #565e64;
+  background-color: #d6d6d6; /* Slightly darker gray for hover */
+  color: #000; /* Keep text black */
 }
+
 .btn-check:focus + .btn-secondary, .btn-secondary:focus {
   color: #fff;
   background-color: #5c636a;
@@ -3561,7 +3578,7 @@ textarea.form-control-lg {
   z-index: 1000;
   display: none;
   min-width: 10rem;
-  padding: 0.5rem 0;
+  padding: 0.5rem 0.5rem;
   margin: 0;
   font-size: 1rem;
   color: #212529;
@@ -3569,7 +3586,6 @@ textarea.form-control-lg {
   list-style: none;
   background-color: #fff;
   background-clip: padding-box;
-  border: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 0.25rem;
 }
 .dropdown-menu[data-bs-popper] {
@@ -4083,6 +4099,7 @@ textarea.form-control-lg {
   flex-basis: 100%;
   flex-grow: 1;
   align-items: center;
+  justify-content: center;
 }
 
 .navbar-toggler {
@@ -4093,6 +4110,7 @@ textarea.form-control-lg {
   border: 1px solid transparent;
   border-radius: 0.25rem;
   transition: box-shadow 0.15s ease-in-out;
+  color: #212529;
 }
 @media (prefers-reduced-motion: reduce) {
   .navbar-toggler {
@@ -11362,7 +11380,8 @@ p {
 #mainNav {
   padding-top: 1rem;
   padding-bottom: 1rem;
-  background-color: #212529;
+  background-color: #FFF;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 #mainNav .navbar-toggler {
   padding: 0.75rem;
@@ -11370,6 +11389,7 @@ p {
   font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   text-transform: uppercase;
   font-weight: 700;
+  color: #212529;
 }
 #mainNav .navbar-brand {
   color: #ffc800;
@@ -11384,18 +11404,33 @@ p {
 #mainNav .navbar-nav .nav-item .nav-link {
   font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-size: 0.95rem;
-  color: #fff;
+  color: #212529;
   letter-spacing: 0.0625em;
 }
 #mainNav .navbar-nav .nav-item .nav-link.active, #mainNav .navbar-nav .nav-item .nav-link:hover {
-  color: #ffc800;
+  background-color: transparent;
+  position: relative;
+  font-weight: bold; /* Optional: make the active link bold */
+}
+
+nav .nav-item .nav-link.active::after {
+}
+
+@media (min-width: 992px) {
+  nav .nav-item .nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: -3px; /* Adjust based on spacing needed */
+    left: 50%; /* Start at the center of the element */
+    transform: translateX(-50%); /* Shift by half of the pseudo-element's width to center it */
+    height: 3px; /* Thickness of the underline */
+    width: 30%; /* Underline width relative to the text */
+    background-color: #000; /* Color of the underline */
+  }
 }
 
 @media (min-width: 992px) {
   #mainNav {
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
-    border: none;
     transition: padding-top 0.3s ease-in-out, padding-bottom 0.3s ease-in-out;
   }
   #mainNav .navbar-brand {
@@ -11407,15 +11442,15 @@ p {
     transition: height 0.3s ease-in-out;
   }
   #mainNav.navbar-shrink {
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
   }
   #mainNav.navbar-shrink .navbar-brand {
     font-size: 1.25em;
   }
   #mainNav.navbar-shrink .navbar-brand svg,
 #mainNav.navbar-shrink .navbar-brand img {
-    height: 2.5rem;
+    height: 2rem;
   }
   #mainNav .navbar-nav .nav-item {
     margin-right: 1rem;
@@ -11424,7 +11459,6 @@ p {
     margin-right: 0;
   }
 }
-
 
 .portfolio .portfolio-item {
   max-width: 26rem;
@@ -11782,7 +11816,7 @@ p {
 }
 
 .dropdown-item:hover .nav-link {
-    color: #ffc800;
+    /* color: #ffc800; */
 }
 
 .skillListContainer {
@@ -11812,7 +11846,7 @@ p {
     box-sizing: border-box;
     padding: 0.5rem;
     background: #f8f9fa;
-    border: 2px solid #FFC800;
+    border: 2px solid #ffc800;
 }
 
 .tag {
@@ -11824,7 +11858,7 @@ p {
 
 
 header.masthead {
-  padding: 10rem 1rem 0 1rem;
+  padding: 8rem 1rem 0 1rem;
   text-align: center;
   color: #333;
   background-color: #f9f9f9;
@@ -11893,7 +11927,7 @@ header.masthead {
 }
 
 .text-content .highlight {
-  color: #FFC800;
+  color: #ffc800;
 }
 
 .text-content .text-highlight {
@@ -11916,24 +11950,29 @@ header.masthead {
   margin-bottom: 1rem;
 }
 
-.text-content .btn {
-  background-color: #FFC800;
-  color: #fff;
-  padding: 0.75rem 1.5rem;
-  border: none;
-  text-transform: uppercase;
-  font-size: 0.875rem;
-  margin-bottom: 1rem;
-}
-
 .social-icons {
-  margin: 1rem 0;
+  margin: 1rem 0 1rem 0.5rem;
 }
 
 .social-icons .social-icon {
   margin: 0 0.5rem;
   color: #555;
-  font-size: 1.25rem;
+  font-size: 1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px; /* Set the size of the ellipse */
+  height: 40px; /* Keep the height and width equal for a circular shape */
+  border: 1px solid black; /* Thin black border */
+  border-radius: 50%; /* Makes the shape elliptical (circle) */
+  text-decoration: none; /* Removes any underline from links */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth hover effects */
+}
+
+.social-icon:hover {
+  background-color: #555; /* Add hover effect */
+  color: white; /* Change icon color on hover */
+  font-weight: bold;
 }
 
 .expertise {

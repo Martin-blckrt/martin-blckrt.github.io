@@ -10,7 +10,7 @@
 window.addEventListener('DOMContentLoaded', event => {
 
     // Navbar shrink function
-    var navbarShrink = function () {
+    const navbarShrink = function () {
         const navbarCollapsible = document.body.querySelector('#mainNav');
         const skillsDropdown = document.body.querySelector('#skillsDropdown');
         const dropdownItems = document.body.querySelectorAll('.dropdown-item');
@@ -30,14 +30,7 @@ window.addEventListener('DOMContentLoaded', event => {
     // Shrink the navbar when page is scrolled
     document.addEventListener('scroll', navbarShrink);
 
-    // Activate Bootstrap scrollspy on the main nav element
-    const mainNav = document.body.querySelector('#mainNav');
-    if (mainNav) {
-        new bootstrap.ScrollSpy(document.body, {
-            target: '#mainNav',
-            offset: 74,
-        });
-    };
+
 
     // hover icon shows text
     const telIcon = document.body.querySelector('#phoneIcon');
@@ -86,6 +79,55 @@ window.addEventListener('DOMContentLoaded', event => {
         });
     });
 
+    const navPlaceholder = document.getElementById('mainNav');
+    const cachedNav = localStorage.getItem('nav');
+    if (cachedNav) {
+        navPlaceholder.innerHTML = cachedNav;
+        navPlaceholder.style.visibility = 'visible';
+    }
+
+    const resumePlaceholder = document.getElementById('resumeModal');
+    const cachedResume = localStorage.getItem('resume');
+    if (cachedResume) {
+        resumePlaceholder.innerHTML = cachedResume;
+        resumePlaceholder.style.visibility = 'visible';
+    }
+
+    const footerPlaceholder = document.getElementById('footer-placeholder');
+    const cachedFooter = localStorage.getItem('footer');
+    if (cachedFooter) {
+        footerPlaceholder.innerHTML = cachedFooter;
+        footerPlaceholder.style.visibility = 'visible';
+    }
+
+    fetch('components/navigation.html')
+        .then(response => response.text())
+        .then(data => {
+            navPlaceholder.innerHTML = data;
+            navPlaceholder.style.visibility = 'visible';
+            localStorage.setItem('nav', data);
+            highlightActiveNavLink();
+        })
+        .catch(error => console.error('Error loading navigation:', error));
+    fetch('components/resume.html')
+        .then(response => response.text())
+        .then(data => {
+            resumePlaceholder.innerHTML = data;
+            resumePlaceholder.style.visibility = 'visible';
+            localStorage.setItem('resume', data);
+            highlightActiveNavLink();
+        })
+        .catch(error => console.error('Error loading resume:', error));
+    fetch('components/footer.html')
+        .then(response => response.text())
+        .then(data => {
+            footerPlaceholder.innerHTML = data;
+            footerPlaceholder.style.visibility = 'visible';
+            localStorage.setItem('footer', data);
+            highlightActiveNavLink();
+        })
+        .catch(error => console.error('Error loading footer:', error));
+
 });
 
 // RESUME MODAL SECTION
@@ -118,62 +160,17 @@ function highlightActiveNavLink() {
 
     navLinks.forEach(link => {
         // Check if the link's href matches the current path
-        if (link.href === currentPath) {
-            link.style.color = '#ffc800'; // Apply the active style
+        if (link.href.split('#')[0] === currentPath.split('#')[0] && link.href.split('#')[1] == null) {
+            link.classList.add("active")
+            //link.style.color = '#ffc800'; // Apply the active style
         } else {
-            link.style.color = ''; // Reset the color for other links
+            link.classList.remove("active")
+            //link.style.color = ''; // Reset the color for other links
         }
     });
 }
 
-const navPlaceholder = document.getElementById('mainNav');
-const cachedNav = localStorage.getItem('nav');
-if (cachedNav) {
-    navPlaceholder.innerHTML = cachedNav;
-    navPlaceholder.style.visibility = 'visible';
-}
 
-const resumePlaceholder = document.getElementById('resumeModal');
-const cachedResume = localStorage.getItem('resume');
-if (cachedResume) {
-    resumePlaceholder.innerHTML = cachedResume;
-    resumePlaceholder.style.visibility = 'visible';
-}
-
-const footerPlaceholder = document.getElementById('footer-placeholder');
-const cachedFooter = localStorage.getItem('footer');
-if (cachedFooter) {
-    footerPlaceholder.innerHTML = cachedFooter;
-    footerPlaceholder.style.visibility = 'visible';
-}
-
-fetch('components/navigation.html')
-    .then(response => response.text())
-    .then(data => {
-        navPlaceholder.innerHTML = data;
-        navPlaceholder.style.visibility = 'visible';
-        localStorage.setItem('nav', data);
-        highlightActiveNavLink();
-    })
-    .catch(error => console.error('Error loading navigation:', error));
-fetch('components/resume.html')
-    .then(response => response.text())
-    .then(data => {
-        resumePlaceholder.innerHTML = data;
-        resumePlaceholder.style.visibility = 'visible';
-        localStorage.setItem('resume', data);
-        highlightActiveNavLink();
-    })
-    .catch(error => console.error('Error loading resume:', error));
-fetch('components/footer.html')
-    .then(response => response.text())
-    .then(data => {
-        footerPlaceholder.innerHTML = data;
-        footerPlaceholder.style.visibility = 'visible';
-        localStorage.setItem('footer', data);
-        highlightActiveNavLink();
-    })
-    .catch(error => console.error('Error loading footer:', error));
 /*
 window.onload = function() {
 
