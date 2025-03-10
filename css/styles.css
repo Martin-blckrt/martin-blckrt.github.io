@@ -11626,6 +11626,7 @@ nav .nav-item .nav-link.active::after {
 }
 .timeline > li .timeline-image {
   position: absolute;
+  background-color: var(--bs-primary);
   z-index: 100;
   left: 0;
   width: 80px;
