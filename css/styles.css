@@ -11751,7 +11751,7 @@ nav .nav-item .nav-link.active::after {
 .skills img {
   width: 8rem;
   height: 8rem;
-  border: 0.5rem solid rgba(0, 0, 0, 0.1);
+  border: 0.5rem solid var(--bs-primary);
 }
 .skills h4, .skills .h4 {
   margin-top: 1.5rem;
@@ -11848,36 +11848,216 @@ nav .nav-item .nav-link.active::after {
 .hardSkill {
     box-sizing: border-box;
     padding: 0.5rem;
-    background: #f8f9fa;
+    background: #ffffff;
     border: 2px solid var(--bs-primary);
 }
 
+.duality-card {
+    position: relative;
+    background: #ffffff;
+    border-radius: 22px;
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.12);
+    overflow: hidden;
+}
+
 .duality-grid {
-    margin-top: 1rem;
+    margin: 0;
+    position: relative;
+    align-items: stretch;
 }
 
 .duality-col {
-    padding: 0 2rem;
+    position: relative;
+    overflow: visible;
+    padding: 0;
+    display: flex;
+    align-items: stretch;
 }
 
-.duality-heading {
-    margin-bottom: 1.5rem;
+.duality-left {
+    background: #fbfaf7;
+}
+
+.duality-right {
+    background: #f5f6f8;
 }
 
 .duality-item {
-    margin-bottom: 2rem;
+    margin-bottom: 0;
+}
+
+.duality-panel {
+    position: relative;
+    z-index: 2;
+    width: calc(100% - 36px);
+    min-height: 100%;
+    padding: 3rem 3.5rem;
+    background: inherit;
+    transition: transform 350ms ease, box-shadow 350ms ease;
+    will-change: transform;
+    flex: 1 1 auto;
+}
+
+.duality-left .duality-panel {
+    margin-left: 36px;
+}
+
+.duality-right .duality-panel {
+    margin-right: 36px;
+}
+
+.duality-left:hover .duality-panel {
+    transform: translateX(240px);
+    box-shadow: inset 0 0 0 1px rgba(214, 151, 76, 0.25), 0 12px 24px rgba(0, 0, 0, 0.08);
+    z-index: 4;
+}
+
+.duality-right:hover .duality-panel {
+    transform: translateX(-240px);
+    box-shadow: inset 0 0 0 1px rgba(214, 151, 76, 0.25), 0 12px 24px rgba(0, 0, 0, 0.08);
+    z-index: 4;
+}
+
+.poke-card {
+    position: absolute;
+    top: 50%;
+    width: 220px;
+    height: 350px;
+    transform: translateY(-50%);
+    z-index: 1;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #fff6e8 0%, #fde6c8 100%);
+    border: 2px solid rgba(214, 151, 76, 0.6);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+    text-align: left;
+    padding: 0.9rem;
+    padding-bottom: 2.3rem;
+}
+
+.poke-card-left {
+    left: 20px;
+}
+
+.poke-card-right {
+    right: 20px;
+}
+
+.poke-card-header {
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #7a4b1e;
+    margin-bottom: 0.5rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.poke-card-image {
+    margin-bottom: 0.6rem;
+}
+
+.poke-card-image-frame {
+    background: #fffdf8;
+    border: 2px solid rgba(214, 151, 76, 0.5);
+    border-radius: 10px;
+    height: 110px;
+    overflow: hidden;
+}
+
+.poke-card-image-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+.poke-card-body {
+    background: #fffdf8;
+    border-radius: 10px;
+    padding: 0.75rem;
+    border: 1px solid rgba(214, 151, 76, 0.35);
+    height: calc(100% - 7.5rem);
+    margin-bottom: 0.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+}
+
+.poke-card-title {
+    font-weight: 700;
+    margin-top: 10px;
+    color: #3a2a16;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.poke-card-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.35rem;
+    font-size: 0.75rem;
+    color: #5b3b1a;
+}
+
+.poke-card-stats div {
+    padding: 0.3rem 0.4rem;
+    border-radius: 6px;
+    background: rgba(214, 151, 76, 0.12);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.poke-card-text {
+    font-size: 0.75rem;
+    color: rgba(58, 42, 22, 0.75);
+    margin-top: auto;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .duality-divider {
-    border-left: 1px solid rgba(0, 0, 0, 0.08);
+    position: absolute;
+    top: 6%;
+    bottom: 6%;
+    left: 50%;
+    width: 1px;
+    background: var(--bs-primary);
+    transform: translateX(-50%);
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.45;
 }
 
 @media (max-width: 991.98px) {
+    .duality-col {
+        padding: 0;
+    }
+    .duality-panel,
+    .duality-left .duality-panel,
+    .duality-right .duality-panel,
+    .duality-left:hover .duality-panel,
+    .duality-right:hover .duality-panel {
+        width: 100%;
+        margin: 0;
+        transform: none;
+        box-shadow: none;
+    }
+    .poke-card {
+        position: static;
+        transform: none;
+        width: 100%;
+        height: auto;
+        margin-top: 1rem;
+    }
+    .duality-panel {
+        padding: 2rem 2rem;
+    }
     .duality-divider {
-        border-left: none;
-        border-top: 1px solid rgba(0, 0, 0, 0.08);
-        margin-top: 2rem;
-        padding-top: 2rem;
+        display: none;
     }
 }
 
