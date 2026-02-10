@@ -31,6 +31,8 @@ github_username:  Martin-blckrt
 remote_theme: https://github.com/StartBootstrap/startbootstrap-agency
 plugins:
   - jekyll-feed
+remote_theme_download_command: "curl -L -o %s %s"
+
 
 # Exclude from processing.
 # The following items will not be processed, by default.
