@@ -11852,6 +11852,35 @@ nav .nav-item .nav-link.active::after {
     border: 2px solid var(--bs-primary);
 }
 
+.duality-grid {
+    margin-top: 1rem;
+}
+
+.duality-col {
+    padding: 0 2rem;
+}
+
+.duality-heading {
+    margin-bottom: 1.5rem;
+}
+
+.duality-item {
+    margin-bottom: 2rem;
+}
+
+.duality-divider {
+    border-left: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+@media (max-width: 991.98px) {
+    .duality-divider {
+        border-left: none;
+        border-top: 1px solid rgba(0, 0, 0, 0.08);
+        margin-top: 2rem;
+        padding-top: 2rem;
+    }
+}
+
 .tag {
   position: relative;
   bottom: -20px;
